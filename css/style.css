@@ -109,6 +109,10 @@
     .topbar {
         display: none;    
     }
+
+    .home-blog-area .container .row .home-blog-single .blog-img img{
+        width: 80%;
+    }
 }
 /*** Topbar End ***/
 
@@ -119,8 +123,8 @@
 }
 
 .navbar .navbar-brand .rye-logo{
-    max-width: 15vw;
-    padding: 10px;
+    max-width: 25vw;
+    padding: 5px;
 }
 
 .navbar .navbar-nav .nav-link {
@@ -156,6 +160,11 @@
         transition: .5s;
         opacity: 0;
     }
+
+    .navbar .navbar-brand .rye-logo{
+    max-width: 15vw;
+    padding: 10px;
+}
 }
 
 @media (max-width: 1200px) {
