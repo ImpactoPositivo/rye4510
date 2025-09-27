@@ -1,0 +1,165 @@
+  /* alterações no html e mapa */
+
+.d4510-area{
+  display: flex;
+  align-items: center;
+  align-content: center;
+  margin: auto;
+}
+
+.no-hover {
+  pointer-events: none; 
+  fill: none;
+  stroke-width: 1px;
+}
+
+.map-container svg{
+  width: 70%;
+  margin: 15px;
+}
+
+.map-container #region0,#region9,#region15,#region26,#region38,#region46,#region49,#region65,#region67,#region81,#region100,#region102,#region114,#region147,#region159,#region160,#region162,#region169,#region174,#region175,#region179,#region181,#region183,#region184,#region189,#region190,#region215,#region219,#region223,#region227,#region236,#region238,#region247,#region289,#region294,#region309,#region314,#region322,#region323,#region325,#region326,#region328,#region339,#region353,#region360,#region361,#region373,#region384,#region388,#region389,#region392,#region393,#region397,#region398,#region399,#region404,#region409,#region418,#region430,#region438,#region443,#region446,#region457,#region462,#region463,#region464,#region465,#region468,#region469,#region471,#region473,#region475,#region484,#region491,#region496,#region501,#region505,#region509,#region510,#region526,#region533,#region540,#region551,#region589,#region601,#region602,#region606,#region616,#region617,#region635{
+    fill:#f7a81b;
+}
+
+.map-container #region0:hover,#region9:hover,#region15:hover,#region26:hover,#region38:hover,#region46:hover,#region49:hover,#region65:hover,#region67:hover,#region81:hover,#region100:hover,#region102:hover,#region114:hover,#region147:hover,#region159:hover,#region160:hover,#region162:hover,#region169:hover,#region174:hover,#region175:hover,#region179:hover,#region181:hover,#region183:hover,#region184:hover,#region189:hover,#region190:hover,#region215:hover,#region219:hover,#region223:hover,#region227:hover,#region236:hover,#region238:hover,#region247:hover,#region289:hover,#region294:hover,#region309:hover,#region314:hover,#region322:hover,#region323:hover,#region325:hover,#region326:hover,#region328:hover,#region339:hover,#region353:hover,#region360:hover,#region361:hover,#region373:hover,#region384:hover,#region388:hover,#region389:hover,#region392:hover,#region393:hover,#region397:hover,#region398:hover,#region399:hover,#region404:hover,#region409:hover,#region418:hover,#region430:hover,#region438:hover,#region443:hover,#region446:hover,#region457:hover,#region462:hover,#region463:hover,#region464:hover,#region465:hover,#region468:hover,#region469:hover,#region471:hover,#region473:hover,#region475:hover,#region484:hover,#region491:hover,#region496:hover,#region501:hover,#region505:hover,#region509:hover,#region510:hover,#region526:hover,#region533:hover,#region540:hover,#region551:hover,#region589:hover,#region601:hover,#region602:hover,#region606:hover,#region616:hover,#region617:hover,#region635:hover{
+    fill:#009739;
+}
+
+.map-clubes .city{
+  width: 30vw;
+  height: 40vh;
+  background-color: #fbeed9;
+}
+
+.legenda{
+  width: 30vw;
+  margin: 8px auto;
+}
+
+.legenda .testa tr, th{
+  background-color: #f7a81b;
+  color: black;
+}
+
+.legenda th, td{
+  border-collapse: collapse;
+  border: 1px solid;
+  padding: 5px;
+}
+
+.legenda th{
+  text-align: center;
+}
+
+.legenda .status{
+  text-align: left;
+}
+
+div #src{
+  width: 30px;
+  height: 20px;
+  background-color: #f7a81b;
+  margin: auto;
+}
+
+div #scc{
+  width: 30px;
+  height: 20px;
+  background-color: #b9d9eb;
+  margin: auto;
+}
+
+div #ccc{
+  width: 30px;
+  height: 20px;
+  background-color: #00a2e0;
+  margin: auto;
+}
+
+path {
+  cursor: pointer;
+  transition: fill 0.3s;
+}
+  
+path.highlight {
+  fill: #8bff6453 !important;
+}
+
+/* alterações no tooltip e info */
+.tooltip {
+position: absolute;
+background-color: rgba(0, 0, 0, 0.8);
+color: white;
+padding: 10px;
+border-radius: 25px;
+font-size: 13px !important;
+display: none;
+pointer-events: none;
+width: auto;
+max-width: 200px;
+}
+
+.tooltip strong{
+  font-size: 16px;
+}
+
+#info-container {
+  width: 25%;
+  float: right;
+  padding: 10px;
+  border-left: 1px solid #ccc;
+  font-size: 16px !important;
+  background: #ffffff;
+  border-radius: 5px;
+}
+
+#municipio-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 15px; 
+}
+
+
+
+@media (max-width: 770px) {
+  h3 {
+    font-size: 13px;
+  }
+
+  .d4510-area{
+    flex-direction: column;
+    margin: auto;
+  }
+
+  .map-clubes{
+    width: 90vw;
+    height: 40vh;
+    background-color: #fbeed9;
+  }
+
+  .legenda{
+    width: 90vw;
+    margin: 0 auto 10px auto;
+
+  }
+
+  .map-container {
+    width: 90vw;
+    margin: 0;
+    padding: 0 15px;
+    float: none;
+  }
+  .map-container svg {
+    width: 90vw !important;
+    min-width: 0;
+    float: none;
+    display: block;
+    margin: 5px auto;
+    padding: 0px 5px;
+    touch-action: pan-x pan-y pinch-zoom;
+    background: #ffffff;
+    border-radius: 0 0 10px 10px;
+  }
+
+}
