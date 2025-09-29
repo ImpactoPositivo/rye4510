@@ -35,6 +35,11 @@
     fill:#009739;
 }
 
+
+.map-inf{
+  margin-right: 15px;
+}
+
 .map-club{
   width: 30vw;
   height: 40vh;
@@ -143,6 +148,10 @@ max-width: 200px;
     margin: auto;
   }
 
+  .map-inf{
+    margin: auto;
+  }
+
   .map-club{
     width: 90vw;
     height: 40vh;
@@ -158,8 +167,6 @@ max-width: 200px;
 
   .map-container {
     width: 90vw;
-    margin: 0;
-    padding: 0 15px;
     float: none;
   }
   .map-container svg {
@@ -168,10 +175,8 @@ max-width: 200px;
     float: none;
     display: block;
     margin: 5px auto;
-    padding: 0px 5px;
     touch-action: pan-x pan-y pinch-zoom;
     background: #ffffff;
-    border-radius: 0 0 10px 10px;
   }
 
 }
