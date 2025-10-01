@@ -124,8 +124,8 @@
     margin: auto;
     }
 
-        .container .inscr2-fig{
-        display: none;
+    .container .inscr2-fig{
+    display: none;
     }
 }
 
@@ -138,8 +138,8 @@
 }
 
 .navbar .navbar-brand .rye-logo{
-    max-width: 25vw;
-    padding: 5px;
+    max-width: 15vw;
+    padding: 10px;
 }
 
 .navbar .navbar-nav .nav-link {
@@ -180,10 +180,10 @@
         display: none;
     }
 
-
     .navbar .navbar-brand .rye-logo{
-    max-width: 15vw;
-    padding: 10px;
+        max-width: 15vw;
+        padding: 10px;
+    }
 }
 
 @media (max-width: 1200px) {
@@ -214,7 +214,7 @@
 
 .carousel-header #carouselId .carousel-inner .carousel-item {
     position: relative;
-    min-height: 100vh 
+    min-height: 100vh;
 }
 
 .carousel-header #carouselId .carousel-inner .carousel-item img {
@@ -274,8 +274,7 @@
     height: 12px;
     border-radius: 12px !important;
     border: 5px solid transparent;
-    transition: 0.5s;
-    
+    transition: 0.5s;    
 }
 
 .carousel-header #carouselId.carousel .carousel-indicators li.active {
@@ -301,8 +300,8 @@
 .about .tab-class .nav .nav-item a.active,
 .about .tab-class .nav .nav-item a.active span {
     background: var(--bs-primary) !important;
-    color: var(--bs-white) !important;}
-
+    color: var(--bs-white) !important;
+}
 /*** About End ***/
 
 /*** Historia Start ***/
@@ -313,7 +312,6 @@
     justify-content: center;
     align-items: center;
 }
-
 /*** Historia End ***/
 
 /*** Inscrição STEP Start ***/
@@ -324,7 +322,6 @@
     justify-content: center;
     align-items: center;
 }
-
 /*** Inscrição STEP End ***/
 
 /*** Service Start ***/
@@ -422,7 +419,6 @@
     visibility: visible;
     opacity: 1;
 }
-
 /*** Donation End ***/
 
 
@@ -487,7 +483,6 @@
     border-color: var(--bs-white);
     border-style: dotted;
     border-top: 0;
-
 }
 
 .causes .causes-item .causes-content .mib-3{
@@ -518,7 +513,6 @@
     background: var(--bs-dark);
     z-index: 1;
 }
-
 /*** causes End ***/
 
 
@@ -561,6 +555,7 @@
     background: var(--bs-secondary);
     color: var(--bs-primary);
 }
+
 .event .event-carousel .event-item .event-content {
     border-style: dotted;
     border-top: 0; 
@@ -581,7 +576,6 @@
 .agenda iframe{
     margin: auto;
 }
-
 /*** Eventos End ***/
 
 
@@ -720,14 +714,13 @@
 /*** Gallery End ***/
 
 
-/*** Volunteer Start ***/
+/*** Voluntário Start ***/
 .volunteer {
     background: rgba(249, 195, 123, .1);
 }
 
 .volunteer .governor-img{
     margin: 5px auto;
-
 }
 
 .volunteer .volunteer-img {
@@ -761,7 +754,7 @@
 .volunteer .volunteer-img:hover img {
     transform: scale(1.2);
 }
-/*** Volunteer End ***/
+/*** Voluntário End ***/
 
 
 /*** Contato Start ***/
@@ -776,7 +769,6 @@
     flex-direction: row;
     padding-bottom: .8rem;
 }
-
 /*** Contato End ***/
 
 
