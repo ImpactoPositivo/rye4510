@@ -127,6 +127,11 @@
     .container .inscr2-fig{
     display: none;
     }
+
+    .container-fluid .container .navbar .navbar-brand .rye-logo{
+        width: 25vw;
+        padding: 5px;
+    }
 }
 
 /*** Topbar End ***/
@@ -135,11 +140,6 @@
 /*** Navbar Start ***/
 .navbar {
     padding: 0;
-}
-
-.navbar .navbar-brand .rye-logo{
-    max-width: 15vw;
-    padding: 10px;
 }
 
 .navbar .navbar-nav .nav-link {
