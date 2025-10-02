@@ -180,6 +180,10 @@
         display: none;
     }
 
+    .inscr5-down{
+        display: none;
+    }
+
     .navbar .navbar-brand .rye-logo{
         max-width: 15vw;
         padding: 10px;
@@ -314,15 +318,42 @@
 }
 /*** Historia End ***/
 
+/*** Inscrição Start ***/
+
+#item01,#item02,#item03 .text-primary{
+    margin-top: -40px;
+} .text-primary{
+    margin-top: -40px;
+} .text-primary{
+    margin-top: -40px;
+}
+
+.container-fluid .container .ali-text .inscr-topico{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.1rem !important;
+}
+
+/*** Inscrição End ***/
+
+
 /*** Inscrição STEP Start ***/
 .alinha2{
-    background-color: rgb(250, 237, 127);
+    background-color: rgb(252, 247, 198);
     box-shadow: 5px 10 px 10 px rgb(44, 44, 44);
     position: relative;
     justify-content: center;
     align-items: center;
 }
 /*** Inscrição STEP End ***/
+/*** Inscrição Bolsa Start ***/
+.alinha3{
+    background-color: rgb(224, 247, 224);
+    box-shadow: 5px 10 px 10 px rgb(44, 44, 44);
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+/*** Inscrição Bols End ***/
 
 /*** Service Start ***/
 .service .service-item {
