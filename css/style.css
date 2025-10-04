@@ -333,6 +333,19 @@
     font-size: 1.1rem !important;
 }
 
+.inscr-select {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+}
+
+.inscr2-fig{
+    max-width: 25vw;
+}
+
+
+
 /*** Inscrição End ***/
 
 
