@@ -357,6 +357,11 @@
     justify-content: center;
     align-items: center;
 }
+
+.inscr-fig{
+    max-width: 15vw;
+}
+
 /*** Inscrição STEP End ***/
 /*** Inscrição Bolsa Start ***/
 .alinha3{
