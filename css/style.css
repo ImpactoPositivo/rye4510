@@ -164,7 +164,7 @@
     margin-left: 8px;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 901px) {
     .navbar .nav-item .dropdown-menu {
         display: block;
         visibility: hidden;
