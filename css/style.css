@@ -340,6 +340,14 @@
     align-items: center;
 }
 
+.ali-fig{
+    display: flex;
+}
+
+.inscr-fig, .inscr2-fig{
+    display: flex;
+}
+
 .inscr2-fig{
     max-width: 25vw;
 }
@@ -359,7 +367,7 @@
 }
 
 .inscr-fig{
-    max-width: 15vw;
+    max-width: 20vw;
 }
 
 /*** Inscrição STEP End ***/
