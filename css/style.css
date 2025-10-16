@@ -105,7 +105,7 @@
 }
 
 
-@media (max-width: 901px) {
+@media (max-width: 1301px) {
     .topbar {
         display: none;    
     }
@@ -367,7 +367,7 @@
 }
 
 .inscr-fig{
-    max-width: 20vw;
+    width: 20vw;
 }
 
 /*** Inscrição STEP End ***/
@@ -816,6 +816,13 @@
 
 .volunteer .volunteer-img:hover img {
     transform: scale(1.2);
+}
+
+.pic-gov{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    max-width: 20vw;
 }
 /*** Voluntário End ***/
 
