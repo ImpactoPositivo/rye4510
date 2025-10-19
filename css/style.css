@@ -104,6 +104,12 @@
     color: var(--bs-secondary) !important;
 }
 
+.topbar-flag{
+    width: 20%;
+    display: flex;
+    flex-direction: row;
+}
+
 
 @media (max-width: 1301px) {
     .topbar {
@@ -131,6 +137,11 @@
     .container-fluid .container .navbar .navbar-brand .rye-logo{
         width: 25vw;
         padding: 5px;
+    }
+
+    .navbar .topbar-flag a img{
+        width: 5vw;
+        margin: 0px 15px;
     }
 }
 
@@ -175,6 +186,9 @@
         transition: .5s;
         opacity: 0;
     }
+    .topbar-flag{
+        display: none;
+    }
 
     .inscr2-down{
         display: none;
@@ -193,6 +207,11 @@
 @media (max-width: 1200px) {
     .navbar .collapse.navbar-collapse .btn-hover-bg.btn {
         margin-bottom: 20px;
+    }
+
+    .navbar .topbar-flag a img{
+        width: 5vw;
+        margin: 0px 15px;
     }
 }
 
