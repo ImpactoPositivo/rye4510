@@ -111,6 +111,8 @@
 }
 
 
+
+
 @media (max-width: 1301px) {
     .topbar {
         display: none;    
@@ -139,10 +141,16 @@
         padding: 5px;
     }
 
-    .navbar .topbar-flag a img{
+    .navbar .topbar-flag a{
         width: 5vw;
-        margin: 0px 15px;
+        margin: 0px 5px;
     }
+
+    .navbar .topbar-flag a:hover{
+        box-shadow: 5px 5px 5px var(--bs-secondary);
+    }
+
+
 }
 
 /*** Topbar End ***/
