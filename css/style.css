@@ -744,7 +744,6 @@ article {
 
 .article-pic img{
     width: 100%;
-    margin: auto;
     padding-bottom: 10px;
 }
 
@@ -752,10 +751,10 @@ article {
     margin: auto;
 }
 
-.container .ali-text .article-topico{
+article h1 {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.2rem;
-    text-align: left;
+    text-align: left !important;
 }
 
 /*** Blog End ***/
