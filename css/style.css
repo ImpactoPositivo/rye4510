@@ -728,6 +728,26 @@
 .blog .blog-item .blog-img:hover .search-icon {
     opacity: 1;
 }
+
+article {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    text-align: justify;
+    margin: auto;
+}
+
+.article-pic img{
+    width: 100%;
+    margin: auto;
+    padding-bottom: 10px;
+}
+
+.btn-article{
+    margin: auto;
+}
+
 /*** Blog End ***/
 
 /*** Gallery Start ***/
