@@ -374,7 +374,7 @@
     display: flex;
 }
 
-.inscr-fig, .inscr2-fig{
+.inscr2-fig{
     display: flex;
 }
 
@@ -397,7 +397,7 @@
 }
 
 .inscr-fig{
-    width: 20vw;
+    max-width: 70%;
 }
 
 /*** Inscrição STEP End ***/
