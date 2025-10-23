@@ -150,7 +150,11 @@
         box-shadow: 5px 5px 5px var(--bs-secondary);
     }
 
-
+    .download table tr td{
+        font-size: .8rem;
+        padding: 5px;
+        margin: 0px 5px;
+    }
 }
 
 /*** Topbar End ***/
@@ -416,6 +420,45 @@
     margin-bottom: 20px;
 }
 /*** Treinamento End ***/
+
+/*** Download Start ***/
+
+.download{
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+
+.download table{
+    width: 90vw;
+    border-collapse: collapse;
+    margin: 0px auto;
+    margin: 0px !important;
+}
+
+.download table tbody{
+    margin: auto;
+}
+
+.download table tr {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid var(--bs-primary);
+}
+
+.download table tr td i{
+    color: var(--bs-primary);
+    font-size: 1.5rem;
+    padding: 10px;
+    margin: 0px 10px;
+}
+
+.download table tr td i:hover{
+    background-color: var(--bs-primary);
+    color: var(--bs-dark);
+}
+
+/*** Download End ***/
 
 /*** Service Start ***/
 .service .service-item {
