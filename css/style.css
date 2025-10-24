@@ -793,6 +793,10 @@ article {
     margin: auto;
 }
 
+.article-topico{
+    text-align: left !important;
+}
+
 .article-pic img{
     width: 100%;
     padding-bottom: 10px;
