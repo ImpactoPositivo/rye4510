@@ -21,15 +21,15 @@
   margin: 15px;
 }
 
-.map-container #region9,#region15,#region26,#region38,#region65,#region81,#region100,#region102,#region147,#region160,#region162,#region169,#region174,#region175,#region179,#region181,#region183,#region184,#region189,#region215,#region219,#region223,#region227,#region236,#region238,#region247,#region289,#region294,#region314,#region322,#region323,#region325,#region339,#region353,#region360,#region361,#region373,#region384,#region388,#region389,#region392,#region393,#region398,#region409,#region418,#region430,#region443,#region446,#region457,#region462,#region465,#region468,#region469,#region471,#region475,#region484,#region491,#region501,#region505,#region509,#region510,#region526,#region533,#region540,#region551,#region589,#region601,#region602,#region606,#region616,#region617,#region635{
+.map-container #region9,#region15,#region26,#region38,#region65,#region81,#region100,#region102,#region147,#region162,#region169,#region174,#region175,#region181,#region183,#region184,#region215,#region223,#region227,#region236,#region238,#region247,#region289,#region294,#region314,#region322,#region323,#region325,#region339,#region353,#region360,#region361,#region373,#region384,#region388,#region392,#region409,#region418,#region430,#region443,#region446,#region457,#region462,#region465,#region468,#region469,#region471,#region475,#region484,#region491,#region501,#region505,#region509,#region510,#region526,#region533,#region540,#region551,#region589,#region601,#region606,#region617{
     fill:#f7a81b;
 }
 
-.map-container #region0,#region46,#region67,#region49,#region114,#region159,#region190,#region309,#region326,#region328,#region397,#region463,#region473,#region464{
+.map-container #region0,#region15,#region46,#region65,#region67,#region49,#region114,#region159,#region179,#region190,#region219,#region326,#region328,#region393,#region397,#region399,#region438,#region463,#region465,#region473,#region464,#region496,#region602,#region616,#region635{
   fill:#00a2e0;
 }
 
-.map-container #region399,#region404,#region496,#region438{
+.map-container #region160,#region189,#region309,#region389,#region398,#region404,#region446,#region475,#region533{
   fill: #b9d9eb;
 }
 
@@ -47,6 +47,12 @@
   width: 30vw;
   height: 40vh;
   background-color: #fbeed9;
+}
+
+.map-club iframe{
+  background-color: #fbeed9;
+  width: 30vw;
+  height: 40vh;
 }
 
 .legenda{
@@ -157,10 +163,16 @@ max-width: 200px;
 
   .map-club{
     width: 90vw;
-    height: 40vh;
+    height: 30vh;
     background-color: #fbeed9;
     margin-bottom: 5px;
   }
+
+  .map-club iframe{
+  background-color: #fbeed9;
+  width: 100%;
+  height: 30vh;
+}
 
   .legenda{
     width: 90vw;

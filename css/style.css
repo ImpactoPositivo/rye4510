@@ -111,8 +111,6 @@
 }
 
 
-
-
 @media (max-width: 1301px) {
     .topbar {
         display: none;    
@@ -349,6 +347,68 @@
 }
 /*** Historia End ***/
 
+/*** Clubes 4510 Start ***/
+
+.club-4510{
+    background-color: #fbeed9;
+    color: var(--bs-dark);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1rem;
+    text-align: justify;
+    padding-left: 10vw;
+    margin: 0px auto;
+}
+
+.city-detail{
+    padding: 30px 0px;
+}
+
+.club-4510 h3{
+    font-size: 1.5rem;
+    color: var(--bs-primary);
+    font-weight: bold;
+    padding: 5px 0px;
+    text-align: center;
+}
+
+.club-4510 h1{
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin: 0px;
+    padding: 5px 0px;
+}
+
+.club-4510 h2{
+    font-size: 1rem;
+    color: var(--bs-blue);
+    font-weight: bold;
+    margin: 0px;
+    padding: 5px 0px;
+}
+
+.club-4510 p{
+    font-size: .8rem;
+    font-weight: 600;
+    margin: 0px;
+    padding: 5px 0px;
+}
+
+.club-4510 p a{
+    line-height: 1rem;
+    font-size: .8rem;
+    color: var(--bs-gray);
+    font-weight: 600;
+    margin: 0px;
+    padding: 5px 0px;
+}
+
+.club-4510 p a:hover{
+    color: var(--bs-blue);
+    text-decoration: underline;
+}
+
+/*** Clubes 4510 End ***/
+
 /*** Inscrição Start ***/
 
 #item01,#item02,#item03 .text-primary{
@@ -385,8 +445,6 @@
 .inscr2-fig{
     max-width: 25vw;
 }
-
-
 
 /*** Inscrição End ***/
 
@@ -883,6 +941,13 @@ article h1 {
 /*** Voluntário Start ***/
 .volunteer {
     background: rgba(249, 195, 123, .1);
+}
+
+.volunteer .container .leadership{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
 }
 
 .volunteer .governor-img{
