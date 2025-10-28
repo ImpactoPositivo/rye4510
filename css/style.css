@@ -1,3 +1,9 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 
 /*** Spinner Start ***/
 #spinner {
@@ -345,6 +351,14 @@
     justify-content: center;
     align-items: center;
 }
+
+.container .alinha figure figcaption{
+    color: var(--bs-primary);
+    text-align: right;
+    font-weight: bold;
+    padding: 3px;
+}
+
 /*** Historia End ***/
 
 /*** Clubes 4510 Start ***/
