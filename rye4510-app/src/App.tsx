@@ -16,6 +16,7 @@ import ClubesPage from './pages/ClubesPage';
 import ClubesIframePage from './pages/ClubesIframePage';
 import TreinamentosClubesPage from './pages/TreinamentosClubesPage';
 import DownloadsClubesPage from './pages/DownloadsClubesPage';
+import HomeEnPage from './pages/HomeEnPage';
 
 export default function App() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
         <Route element={<Layout><Outlet /></Layout>}>
           {/* Home */}
           <Route path="/"                        element={<HomePage />} />
+          <Route path="/en"                      element={<HomeEnPage />} />
 
           {/* Sobre nós */}
           <Route path="/historia"                element={<HistoriaPage />} />

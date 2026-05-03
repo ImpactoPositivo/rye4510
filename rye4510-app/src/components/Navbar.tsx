@@ -68,6 +68,46 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ''; };
   }, [menuOpen]);
 
+  const isEn = location.pathname.startsWith('/en');
+
+  const getTranslatedItems = () => {
+    if (!isEn) return navItems;
+    
+    // Simple translation map for demo
+    const translations: Record<string, string> = {
+      'Home': 'Home',
+      'Sobre nós': 'About us',
+      'Candidatos': 'Inbounds',
+      'Famílias': 'Families',
+      'Clubes': 'Clubs',
+      'Calendário': 'Calendar',
+      'Mais': 'More',
+      'Contato': 'Contact',
+      'Rotary International': 'Rotary International',
+      'Nossa História': 'Our History',
+      'Distrito 4510': 'Why D4510?',
+      'Programas': 'Programs',
+      'Treinamentos': 'Online Orientations',
+      'Downloads': 'Download',
+      'Blog': 'Blog',
+      'Galeria': 'Gallery',
+      'Voluntários': 'Volunteers',
+      'Inscreva-se': 'Register'
+    };
+
+    return navItems.map(item => ({
+      ...item,
+      label: translations[item.label] || item.label,
+      children: item.children?.map(child => ({
+        ...child,
+        label: translations[child.label] || child.label,
+        // Optional: you could also translate paths if needed, e.g. /historia -> /en/history
+      }))
+    }));
+  };
+
+  const currentNavItems = getTranslatedItems();
+
   return (
     <>
       <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
@@ -81,20 +121,20 @@ export default function Navbar() {
             <a href="https://www.facebook.com/yep4510" target="_blank" rel="noreferrer"><FaFacebook size={14} /></a>
             <a href="https://www.instagram.com/yep4510/" target="_blank" rel="noreferrer"><FaInstagram size={14} /></a>
             <a href="https://www.youtube.com/channel/UCQScU_raNswx3TBhQHRmF7g" target="_blank" rel="noreferrer"><FaYoutube size={14} /></a>
-            <a href="/en"><img className="flag-icon" src="/img/flag-usa-color.png" alt="English" /></a>
-            <a href="/"><img className="flag-icon" src="/img/flag-brazil-color.png" alt="Português" /></a>
+            <Link to="/en"><img className="flag-icon" src="/img/flag-usa-color.png" alt="English" /></Link>
+            <Link to="/"><img className="flag-icon" src="/img/flag-brazil-color.png" alt="Português" /></Link>
           </div>
         </div>
 
         {/* ── Main Nav ── */}
         <div className="nav-main">
-          <Link to="/" className="nav-logo">
+          <Link to={isEn ? "/en" : "/"} className="nav-logo">
             <img src="/img/rye-logo.png" alt="Rotary Youth Exchange" />
           </Link>
 
           {/* Desktop links */}
           <div className="nav-links">
-            {navItems.map((item) =>
+            {currentNavItems.map((item) =>
               item.children ? (
                 <div key={item.label} className="nav-dropdown">
                   <span>
@@ -125,10 +165,10 @@ export default function Navbar() {
 
           {/* CTA & mobile */}
           <div className="nav-cta">
-            <Link to="/inscricao" className="btn btn-primary btn-sm">Inscreva-se</Link>
+            <Link to="/inscricao" className="btn btn-primary btn-sm">{isEn ? "Contact us" : "Inscreva-se"}</Link>
             <div className="nav-mobile-flags">
-              <a href="/en"><img className="flag-icon" src="/img/flag-usa-color.png" alt="English" /></a>
-              <a href="/"><img className="flag-icon" src="/img/flag-brazil-color.png" alt="Português" /></a>
+              <Link to="/en"><img className="flag-icon" src="/img/flag-usa-color.png" alt="English" /></Link>
+              <Link to="/"><img className="flag-icon" src="/img/flag-brazil-color.png" alt="Português" /></Link>
             </div>
             <button className={`hamburger${menuOpen ? ' open' : ''}`} onClick={() => setMenuOpen(v => !v)} aria-label="Menu">
               <span /><span /><span />
@@ -139,7 +179,7 @@ export default function Navbar() {
 
       {/* ── Mobile Nav ── */}
       <div className={`mobile-nav${menuOpen ? ' open' : ''}`}>
-        {navItems.map((item) =>
+        {currentNavItems.map((item) =>
           item.children ? (
             <div key={item.label}>
               <div className="mob-dd-header" onClick={() => setOpenMobSub(openMobSub === item.label ? null : item.label)}>
@@ -162,7 +202,7 @@ export default function Navbar() {
           )
         )}
         <div className="mobile-nav-footer">
-          <Link to="/inscricao" className="btn btn-primary">Inscreva-se</Link>
+          <Link to="/inscricao" className="btn btn-primary">{isEn ? "Contact us" : "Inscreva-se"}</Link>
         </div>
       </div>
     </>

@@ -66,7 +66,7 @@ export default function HomePage() {
       {/* Carousel End */}
 
       {/* YEP 4510 Start */}
-      <div className="container-fluid donation py-5">
+      <div className="container-fluid donation section-padding">
         <div className="container py-5">
           <div className="row g-6">
             <div className="col-lg-6 py-3">
@@ -100,7 +100,7 @@ export default function HomePage() {
       {/* YEP 4510 End */}
 
       {/* Causes Start */}
-      <div className="container-fluid causes py-2">
+      <div className="container-fluid causes section-padding">
         <div className="container py-5">
           <div className="text-center mx-auto pb-5" style={{ maxWidth: '800px' }}>
             <h5 className="text-uppercase text-primary">Algumas características</h5>
@@ -165,7 +165,7 @@ export default function HomePage() {
       {/* Causes End */}
 
       {/* About Start */}
-      <div className="container-fluid about py-5">
+      <div className="container-fluid about section-padding">
         <div className="container py-5">
           <div className="row g-5 align-items-center">
             <div className="col-xl-5">
@@ -187,7 +187,7 @@ export default function HomePage() {
       {/* About End */}
 
       {/* Counter Start */}
-      <div className="container-fluid counter py-5" style={{ background: 'linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, 0.4)), url(/img/volunteers-bg.jpg) center center', backgroundSize: 'cover' }}>
+      <div className="container-fluid counter section-padding" style={{ background: 'linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, 0.4)), url(/img/volunteers-bg.jpg) center center', backgroundSize: 'cover' }}>
         <div className="container py-5">
           <div className="text-center mx-auto pb-5" style={{ maxWidth: '800px' }}>
             <h5 className="text-uppercase text-primary">Somos incríveis em nosso trabalho</h5>
@@ -245,7 +245,7 @@ export default function HomePage() {
       {/* Counter End */}
 
       {/* Events Start */}
-      <div className="container-fluid event py-5">
+      <div className="container-fluid event section-padding">
         <div className="container py-5">
           <div className="text-center mx-auto mb-5" style={{ maxWidth: '800px' }}>
             <h5 className="text-uppercase text-primary">Eventos Recentes</h5>

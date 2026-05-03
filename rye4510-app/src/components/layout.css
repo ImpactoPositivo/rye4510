@@ -1,21 +1,29 @@
 /* ── Navbar ── */
 .navbar {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  position: absolute; top: 0; left: 0; right: 0; z-index: 1000;
   display: flex; flex-direction: column;
-  transition: var(--transition);
+  transition: all 0.3s ease;
+}
+.navbar.scrolled {
+  position: fixed;
+  background: var(--white);
+  box-shadow: var(--shadow-md);
+}
+.navbar.scrolled .topbar {
+  display: none;
 }
 
 /* Topbar */
 .topbar {
   background: var(--primary);
-  padding: 8px 4%;
+  padding: 8px 1.5%;
   width: 100%;
   display: flex; align-items: center; justify-content: space-between;
   font-size: .85rem;
-  transition: max-height var(--transition), opacity var(--transition);
-  overflow: hidden; max-height: 50px; opacity: 1;
+  overflow: hidden; 
+  height: 44px;
+  opacity: 1;
 }
-.topbar.scrolled { max-height: 0; opacity: 0; padding-top: 0; padding-bottom: 0; }
 
 .topbar-links { display: flex; gap: 1.5rem; }
 .topbar-links a { color: rgba(255,255,255,.85); display: flex; align-items: center; gap: .4rem; }
@@ -36,13 +44,15 @@
 /* Main nav */
 .nav-main {
   background: var(--white);
-  padding: 0 4%;
+  padding: 0 1.5%;
   display: flex; align-items: center; justify-content: space-between;
-  height: 68px;
+  height: 80px;
   box-shadow: var(--shadow-sm);
-  transition: box-shadow var(--transition);
+  transition: all 0.3s ease;
 }
-.navbar.scrolled .nav-main { box-shadow: var(--shadow-md); }
+.navbar.scrolled .nav-main { 
+  height: 70px;
+}
 
 .nav-logo { display: flex; align-items: center; }
 .nav-logo img { max-height: 52px; width: auto; transition: max-height var(--transition); }
@@ -151,8 +161,24 @@
   .hamburger { display: flex; }
   .nav-mobile-flags { display: flex; gap: .8rem; }
   .topbar { display: none; }
-  .nav-cta { gap: 1.5rem; }
-  .nav-main { padding: 0 5%; }
+  .nav-main { 
+    height: 65px;
+    padding: 0 4%;
+  }
+  .nav-cta { gap: 1rem; }
+  .nav-logo img { max-height: 38px; }
+  .navbar { position: fixed; }
+}
+
+/* ── Section Spacing ── */
+.section-padding {
+  padding: 80px 0;
+}
+@media (max-width: 991px) {
+  .section-padding { padding: 60px 0; }
+}
+@media (max-width: 767px) {
+  .section-padding { padding: 45px 0; }
 }
 
 /* ── Footer ── */
