@@ -14,6 +14,8 @@ import GaleriaPage from './pages/GaleriaPage';
 import VoluntariosPage from './pages/VoluntariosPage';
 import ClubesPage from './pages/ClubesPage';
 import ClubesIframePage from './pages/ClubesIframePage';
+import TreinamentosClubesPage from './pages/TreinamentosClubesPage';
+import DownloadsClubesPage from './pages/DownloadsClubesPage';
 
 export default function App() {
   return (
@@ -41,7 +43,8 @@ export default function App() {
           <Route path="/familias"                element={<FamiliasPage />} />
 
           {/* Clubes */}
-          <Route path="/clubes/downloads"        element={<TreinamentosPage />} />
+          <Route path="/clubes/treinamentos"     element={<TreinamentosClubesPage />} />
+          <Route path="/clubes/downloads"        element={<DownloadsClubesPage />} />
 
           {/* Calendário */}
           <Route path="/eventos"                 element={<EventosPage />} />

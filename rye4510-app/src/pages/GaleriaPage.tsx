@@ -1,53 +1,210 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PageHero from '../components/PageHero';
-import { Maximize2 } from 'lucide-react';
+import { ZoomIn, X } from 'lucide-react';
+
+const galleryItems = [
+  {
+    id: 1,
+    src: '/img/gallery-1.jpg',
+    title: 'Outbound 2025-26',
+    year: '2025',
+    col: 'center'
+  },
+  {
+    id: 2,
+    src: '/img/gallery-2.jpg',
+    title: 'Welcome Orientation',
+    year: '2025',
+    col: 'left'
+  },
+  {
+    id: 3,
+    src: '/img/gallery-3.jpg',
+    title: 'Candidatos 2026-27',
+    year: '2025',
+    col: 'left'
+  },
+  {
+    id: 4,
+    src: '/img/gallery-4.jpg',
+    title: 'Estudantes Inbounds',
+    year: '2025',
+    col: 'right'
+  },
+  {
+    id: 5,
+    src: '/img/gallery-5.jpg',
+    title: 'Famílias e candidatos',
+    year: '2025',
+    col: 'right'
+  }
+];
 
 const GaleriaPage: React.FC = () => {
-  const images = [
-    { id: 1, src: 'https://images.unsplash.com/photo-1528605248644-14dd04bd21c7?auto=format&fit=crop&q=80&w=800', title: 'Treinamento de Orientação' },
-    { id: 2, src: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800', title: 'Grupo LTEP 2024' },
-    { id: 3, src: 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&q=80&w=800', title: 'Conferência Distrital' },
-    { id: 4, src: 'https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&q=80&w=800', title: 'Jantar de Despedida' },
-    { id: 5, src: 'https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&q=80&w=800', title: 'Intercâmbio na Europa' },
-    { id: 6, src: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=800', title: 'Reunião de Outbounds' },
-    { id: 7, src: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=800', title: 'Inbounds no Brasil' },
-    { id: 8, src: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&q=80&w=800', title: 'Atividades Culturais' },
-    { id: 9, src: 'https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&q=80&w=800', title: 'Formatura RYE' },
-  ];
+  const [selectedImg, setSelectedImg] = useState<string | null>(null);
+
+  const leftCol = galleryItems.filter(item => item.col === 'left');
+  const centerCol = galleryItems.filter(item => item.col === 'center');
+  const rightCol = galleryItems.filter(item => item.col === 'right');
+
+  const GalleryCard = ({ item }: { item: typeof galleryItems[0] }) => (
+    <div className="gallery-item mb-4 position-relative overflow-hidden rounded-4 shadow-sm" onClick={() => setSelectedImg(item.src)}>
+      <img src={item.src} className="img-fluid w-100 transition-all" alt={item.title} />
+      
+      <div className="search-icon-overlay">
+        <div className="bg-white rounded-circle p-3 shadow-lg">
+          <ZoomIn className="text-primary" size={24} />
+        </div>
+      </div>
+
+      <div className="gallery-content-overlay p-4">
+        <h4 className="text-white h5 fw-bold mb-0">{item.title}</h4>
+        <p className="text-white-50 small mb-0">{item.year}</p>
+      </div>
+    </div>
+  );
 
   return (
     <div className="galeria-page">
       <PageHero 
-        title="Galeria de Fotos" 
-        subtitle="Momentos inesquecíveis vividos pelos nossos intercambistas."
+        title="Galeria de Imagens" 
+        subtitle="Explore os sorrisos e as aventuras do RYE4510 em nossa galeria de imagens!"
         breadcrumbActive="Galeria"
       />
 
-      <section className="section">
+      <section className="section py-5 my-5">
         <div className="container">
-          <div className="row g-4">
-            {images.map((img) => (
-              <div key={img.id} className="col-sm-6 col-lg-4">
-                <div className="card border-0 shadow-sm overflow-hidden group">
-                  <div className="position-relative overflow-hidden">
-                    <img src={img.src} alt={img.title} className="img-fluid transition-all group-hover:scale-110" />
-                    <div className="position-absolute inset-0 bg-primary bg-opacity-40 d-flex align-items-center justify-content-center opacity-0 group-hover:opacity-100 transition-all cursor-pointer">
-                      <Maximize2 className="text-white" size={32} />
-                    </div>
-                  </div>
-                  <div className="p-3 text-center">
-                    <span className="fw-bold small">{img.title}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
+          <div className="text-center mx-auto pb-5" style={{ maxWidth: '800px' }}>
+            <h5 className="text-uppercase text-primary fw-bold mb-3">Nossa Visão</h5>
+            <h2 className="display-5 fw-bold mb-4">Intercâmbio de Jovens do Rotary: uma Academia de Liderança</h2>
+            <p className="lead text-muted">Para jovens do ensino médio, a jornada do Intercâmbio é uma autêntica escola de Liderança. Desde a seleção ao retorno, cultiva soft skills essenciais, preenchendo a lacuna de desenvolvimento que o ensino regular não oferece. Prepare-se para ser um líder global, pronto para o futuro!</p>
           </div>
-          
-          <div className="text-center mt-5">
-            <button className="btn btn-outline-primary btn-lg px-5 py-3 rounded-pill fw-bold">Carregar mais fotos</button>
+
+          <div className="row g-4">
+            {/* Coluna Esquerda */}
+            <div className="col-lg-4">
+              {leftCol.map(item => <GalleryCard key={item.id} item={item} />)}
+            </div>
+            
+            {/* Coluna Central */}
+            <div className="col-lg-4">
+              {centerCol.map(item => <GalleryCard key={item.id} item={item} />)}
+            </div>
+            
+            {/* Coluna Direita */}
+            <div className="col-lg-4">
+              {rightCol.map(item => <GalleryCard key={item.id} item={item} />)}
+            </div>
           </div>
         </div>
       </section>
+
+      {/* Lightbox Modal */}
+      {selectedImg && (
+        <div className="gallery-lightbox" onClick={() => setSelectedImg(null)}>
+          <button className="close-btn" onClick={() => setSelectedImg(null)}>
+            <X size={32} />
+          </button>
+          <div className="lightbox-content" onClick={e => e.stopPropagation()}>
+            <img src={selectedImg} alt="Gallery Zoom" />
+          </div>
+        </div>
+      )}
+
+      <style>{`
+        .gallery-item {
+          cursor: pointer;
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .gallery-item img {
+          transform: scale(1);
+        }
+        .gallery-item:hover img {
+          transform: scale(1.1);
+        }
+        
+        .search-icon-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(0, 103, 200, 0.4);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0;
+          transition: all 0.3s ease;
+          z-index: 2;
+        }
+        .gallery-item:hover .search-icon-overlay {
+          opacity: 1;
+        }
+
+        .gallery-content-overlay {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background: linear-gradient(transparent, rgba(0,0,0,0.8));
+          z-index: 3;
+          opacity: 0;
+          transform: translateY(20px);
+          transition: all 0.3s ease;
+        }
+        .gallery-item:hover .gallery-content-overlay {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        /* Lightbox Styles */
+        .gallery-lightbox {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0,0,0,0.9);
+          z-index: 9999;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          animation: fadeIn 0.3s ease;
+        }
+        .lightbox-content {
+          max-width: 90%;
+          max-height: 90%;
+          animation: zoomIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .lightbox-content img {
+          max-width: 100%;
+          max-height: 90vh;
+          border-radius: 8px;
+          box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        }
+        .close-btn {
+          position: absolute;
+          top: 30px;
+          right: 30px;
+          background: none;
+          border: none;
+          color: white;
+          cursor: pointer;
+          transition: transform 0.2s ease;
+        }
+        .close-btn:hover {
+          transform: scale(1.2);
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        @keyframes zoomIn {
+          from { transform: scale(0.8); opacity: 0; }
+          to { transform: scale(1); opacity: 1; }
+        }
+      `}</style>
     </div>
   );
 };
