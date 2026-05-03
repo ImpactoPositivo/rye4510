@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PageHero from '../components/PageHero';
-import { ClipboardCheck, Play } from 'lucide-react';
+import { Play } from 'lucide-react';
 import { trainingLevels } from '../data/treinamentosData';
 
 const TreinamentosPage: React.FC = () => {
@@ -37,25 +37,29 @@ const TreinamentosPage: React.FC = () => {
             <p className="lead text-muted">{currentLevel?.subtitle}</p>
           </div>
 
-          <div className="training-grid">
+          <div className="row g-4 tre-esp">
             {currentLevel?.modules.map((module, idx) => (
-              <div key={idx} className="training-card">
-                <div className="video-container">
-                  <iframe 
-                    src={`https://player.vimeo.com/video/${module.vimeoId}${module.vimeoId.includes('?') ? '&' : '?'}badge=0&autopause=0&player_id=0&app_id=58479`} 
-                    frameBorder="0" 
-                    allow="autoplay; fullscreen; picture-in-picture" 
-                    title={module.title}
-                  ></iframe>
-                </div>
-                <div className="training-info">
-                  <h4>{module.title}</h4>
-                  {module.evaluationUrl && (
-                    <a href={module.evaluationUrl} target="_blank" rel="noopener noreferrer" className="btn btn-outline-primary btn-sm mt-2 w-100">
-                      <ClipboardCheck size={16} className="me-2" />
-                      Avaliação do Módulo
-                    </a>
-                  )}
+              <div key={idx} className="col-lg-6 col-xl-4">
+                <div className="causes-item">
+                  <div className="causes-img">
+                    <div style={{ padding: '56.25% 0 0 0', position: 'relative' }}>
+                      <iframe 
+                        src={`https://player.vimeo.com/video/${module.vimeoId}${module.vimeoId.includes('?') ? '&' : '?'}badge=0&autopause=0&player_id=0&app_id=58479`} 
+                        frameBorder="0" 
+                        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+                        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+                        title={module.title}
+                      ></iframe>
+                    </div>
+                  </div>
+                  <div className="causes-content p-4">
+                    <h4 className="mib-3">{module.title}</h4>
+                    {module.evaluationUrl && (
+                      <a href={module.evaluationUrl} target="_blank" rel="noopener noreferrer" className="btn-hover-bg btn btn-primary text-white py-2 px-3">
+                        Avaliação
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
             ))}
@@ -63,9 +67,8 @@ const TreinamentosPage: React.FC = () => {
 
           {currentLevel?.generalEvaluation && (
             <div className="text-center mt-5">
-              <a href={currentLevel.generalEvaluation} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg px-5 py-3 rounded-pill fw-bold">
-                <ClipboardCheck className="me-2" />
-                Avaliação Geral do {currentLevel.title}
+              <a href={currentLevel.generalEvaluation} target="_blank" rel="noopener noreferrer" className="btn-hover-bg btn btn-primary text-white py-3 px-5 fs-5">
+                Avaliação Geral do Módulo
               </a>
             </div>
           )}
