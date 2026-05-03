@@ -149,8 +149,10 @@
 @media (max-width: 1100px) {
   .nav-links, .nav-cta .btn { display: none; }
   .hamburger { display: flex; }
-  .nav-mobile-flags { display: flex; }
+  .nav-mobile-flags { display: flex; gap: .8rem; }
   .topbar { display: none; }
+  .nav-cta { gap: 1.5rem; }
+  .nav-main { padding: 0 5%; }
 }
 
 /* ── Footer ── */
@@ -367,73 +369,88 @@
   padding: 4rem 0;
 }
 
-.map-container {
-  max-width: 1000px;
-  margin: 0 auto;
-  position: relative;
-  background: #fff;
+/* --- District Map Page --- */
+.map-container-box {
+  background: var(--white);
   padding: 2rem;
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
 }
 
-.map-container svg {
-  width: 100%;
-  height: auto;
+.map-legend-box {
+  background: var(--white);
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-light);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
-.map-container path {
-  fill: #e9ecef;
-  stroke: #fff;
-  stroke-width: 1;
-  transition: fill 0.3s ease, transform 0.2s ease;
-  cursor: pointer;
+.legend-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--primary-light);
+  display: inline-block;
 }
 
-.map-container path:hover {
-  fill: var(--primary-color) !important;
-  transform: scale(1.02);
+.legend-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-/* --- Program Details --- */
-.program-detail {
-  padding: 5rem 0;
-  border-bottom: 1px solid #eee;
-}
-
-.program-detail:nth-child(even) {
-  background: #fbfbfb;
-}
-
-.program-icon-box {
-  width: 80px;
-  height: 80px;
-  background: var(--primary-light);
-  color: var(--primary-color);
-  border-radius: 50%;
+.legend-item {
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin-bottom: 1.5rem;
+  gap: 1rem;
+  transition: transform 0.2s ease;
 }
 
-.program-list {
-  list-style: none;
-  padding: 0;
+.legend-item:hover {
+  transform: translateX(5px);
 }
 
-.program-list li {
-  position: relative;
-  padding-left: 1.5rem;
-  margin-bottom: 0.5rem;
+.legend-item .dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.program-list li::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  color: var(--primary-color);
-  font-weight: bold;
+.legend-item .label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.club-details-box {
+  position: sticky;
+  top: 100px;
+}
+
+.iframe-wrapper iframe {
+  box-shadow: var(--shadow-sm);
+  background: var(--white);
+}
+
+.map-path:hover {
+  filter: brightness(1.1);
+  stroke-width: 1.5;
+  stroke: var(--white);
+}
+
+.map-path.outside {
+  pointer-events: none;
+}
+
+@media (max-width: 991px) {
+  .club-details-box {
+    margin-top: 2rem;
+  }
 }
 
 

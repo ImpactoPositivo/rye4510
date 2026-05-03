@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
 import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
 import HistoriaPage from './pages/HistoriaPage';
@@ -13,12 +13,17 @@ import BlogPage from './pages/BlogPage';
 import GaleriaPage from './pages/GaleriaPage';
 import VoluntariosPage from './pages/VoluntariosPage';
 import ClubesPage from './pages/ClubesPage';
+import ClubesIframePage from './pages/ClubesIframePage';
 
 export default function App() {
   return (
     <BrowserRouter>
-      <Layout>
-        <Routes>
+      <Routes>
+        {/* Iframe Route (No Layout) */}
+        <Route path="/iframe/clubes" element={<ClubesIframePage />} />
+
+        {/* Regular Site Routes (With Layout) */}
+        <Route element={<Layout><Outlet /></Layout>}>
           {/* Home */}
           <Route path="/"                        element={<HomePage />} />
 
@@ -52,8 +57,8 @@ export default function App() {
 
           {/* 404 */}
           <Route path="*"                        element={<HomePage />} />
-        </Routes>
-      </Layout>
+        </Route>
+      </Routes>
     </BrowserRouter>
   );
 }

@@ -27,13 +27,21 @@ const DistrictMap: React.FC<DistrictMapProps> = ({ onRegionClick }) => {
   };
 
   const handleClick = (region: RegionData) => {
-    if (region.status === 'certified' && onRegionClick) {
-      onRegionClick(region.id);
+    if (region.status !== 'outside' && onRegionClick) {
+      onRegionClick(region.id); // Pass region ID for anchor navigation
     }
   };
 
+  const getFillColor = (region: RegionData) => {
+    if (region.status === 'outside') return '#a7aca2';
+    if (region.status === 'certified') return '#0067c8';
+    if (region.status === 'uncertified') return '#f7a81b'; // Cidades com clubes não certificados
+    if (region.status === 'no-club') return '#b9d9eb'; // Cidades sem Rotary clubs
+    return region.fill;
+  };
+
   return (
-    <div className="map-wrapper position-relative" style={{ minHeight: '400px' }}>
+    <div className="map-wrapper position-relative">
       <svg
         width="100%"
         height="100%"
@@ -41,7 +49,6 @@ const DistrictMap: React.FC<DistrictMapProps> = ({ onRegionClick }) => {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className="district-svg"
-        style={{ cursor: 'pointer' }}
       >
         {districtRegions.map((region) => (
           <path
@@ -49,19 +56,18 @@ const DistrictMap: React.FC<DistrictMapProps> = ({ onRegionClick }) => {
             id={region.id}
             data-id={region.dataId}
             d={region.d}
-            fill={region.fill}
-            stroke="#ffffff"
-            strokeWidth="0.5"
+            fill={getFillColor(region)}
+            stroke={region.status === 'outside' ? getFillColor(region) : "#ffffff"}
+            strokeWidth={region.status === 'outside' ? "0.2" : "0.5"}
             onMouseEnter={(e) => handleMouseEnter(e, region)}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             onClick={() => handleClick(region)}
             style={{
-              transition: 'fill 0.2s ease',
-              opacity: region.status === 'outside' ? 0.3 : 1,
-              cursor: region.status === 'certified' ? 'pointer' : 'default',
+              transition: 'all 0.2s ease',
+              cursor: region.status !== 'outside' ? 'pointer' : 'default',
             }}
-            className={region.status === 'certified' ? 'certified-path' : ''}
+            className={`map-path ${region.status}`}
           />
         ))}
       </svg>
