@@ -29,6 +29,10 @@
 
   --transition:  0.4s cubic-bezier(.4,0,.2,1);
   --nav-h:       80px;
+
+  /* Bootstrap compatibility / extensions */
+  --bs-primary: var(--primary);
+  --bs-secondary: var(--secondary);
 }
 
 /* ── Reset ── */
@@ -194,3 +198,19 @@ h1, h2, h3, h4, h5, h6 {
 /* ── Swiper custom ── */
 .swiper-pagination-bullet-active { background: var(--primary) !important; }
 .swiper-button-prev, .swiper-button-next { color: var(--white) !important; }
+
+/* ── Custom Utilities ── */
+.ls-wide { letter-spacing: 0.1em; }
+.bg-primary-soft { background-color: rgba(0, 59, 142, 0.1) !important; }
+.text-primary { color: var(--primary) !important; }
+.bg-primary { background-color: var(--primary) !important; }
+.bg-light { background-color: var(--light) !important; }
+.shadow-lg { box-shadow: var(--shadow-lg) !important; }
+.rounded-4 { border-radius: var(--radius-lg) !important; }
+
+.hover-up { transition: transform var(--transition), box-shadow var(--transition) !important; }
+.hover-up:hover { transform: translateY(-10px) !important; box-shadow: var(--shadow-lg) !important; }
+
+.display-4 { font-size: clamp(2.5rem, 6vw, 3.5rem); font-weight: 700; }
+.display-5 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; }
+.display-6 { font-size: clamp(1.5rem, 4vw, 2.5rem); font-weight: 700; }

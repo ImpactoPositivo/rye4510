@@ -12,6 +12,7 @@ import TreinamentosPage from './pages/TreinamentosPage';
 import BlogPage from './pages/BlogPage';
 import GaleriaPage from './pages/GaleriaPage';
 import VoluntariosPage from './pages/VoluntariosPage';
+import ClubesPage from './pages/ClubesPage';
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
           {/* Sobre nós */}
           <Route path="/historia"                element={<HistoriaPage />} />
           <Route path="/d4510"                   element={<DistritoPage />} />
+          <Route path="/d4510/clubes"            element={<ClubesPage />} />
 
           {/* Candidatos */}
           <Route path="/programas"               element={<ProgramasPage />} />
