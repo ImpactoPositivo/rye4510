@@ -7,7 +7,7 @@ const DistrictMap: React.FC = () => {
   
   return (
     <div className="map-container">
-      <svg width="100%" height="auto" viewBox="0 0 1074 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="100%" viewBox="0 0 1074 720" fill="none" xmlns="http://www.w3.org/2000/svg">
         {/* Main paths from the legacy file would go here. 
             I'll include a few representative paths to show functionality. 
             In a full implementation, I'd port all ~160 regions. */}
