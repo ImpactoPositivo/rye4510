@@ -66,10 +66,10 @@ const HomeEnPage: React.FC = () => {
 
       {/* YEP 4510 Start */}
       <div className="container-fluid donation section-padding">
-        <div className="container py-5">
-          <div className="row g-6">
-            <div className="col-lg-6 py-3">
-              <div className="donation-item">
+        <div className="container">
+          <div className="row g-4">
+            <div className="col-md-6 mb-4">
+              <div className="donation-item h-100">
                 <img src="/img/yep4510-1.png" className="img-fluid w-100" alt="District 4510 Map" />
                 <div className="donation-content d-flex flex-column">
                   <h5 className="text-uppercase text-primary mb-4">Excellence and Credibility</h5>
@@ -79,17 +79,17 @@ const HomeEnPage: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="col-lg-6 py-3">
-              <div className="donation-item">
+            <div className="col-md-6 py-3">
+              <div className="donation-item position-relative">
+                <div className="position-absolute" style={{ top: '20px', left: '20px', zIndex: 10 }}>
+                  <a className="btn-hover-bg btn btn-primary text-white py-2 px-4 shadow-sm" href="https://online.fliphtml5.com/50anosYEP4510/kbat/#p=1" target="_blank" rel="noreferrer">Click to read!</a>
+                </div>
                 <img src="/img/yep4510-2.png" className="img-fluid w-100" alt="Legacy" />
                 <div className="donation-content d-flex flex-column">
                   <h5 className="text-uppercase text-primary mb-4">Experience and Tradition</h5>
                   <span className="display-6 text-white fw-bold mb-2">RYE D4510 Legacy:</span>
                   <h4 className="text-white mb-4">50 Years of Youth Exchange</h4>
                   <p className="text-white mb-4">With deep joy and historical responsibility, we proudly present this book: "The Living Memory of YEP 4510: 50 Years of Youth Exchange." It celebrates a journey not merely institutional, but profoundly human—built on encounters, learning, and transformations transcending borders, cultures, and generations.</p>
-                  <div className="donation-btn d-flex align-items-center justify-content-start">
-                    <a className="btn-hover-bg btn btn-primary text-white py-2 px-4" href="https://online.fliphtml5.com/50anosYEP4510/kbat/#p=1" target="_blank" rel="noreferrer">Click to read!</a>
-                  </div>
                 </div>
               </div>
             </div>
@@ -99,13 +99,13 @@ const HomeEnPage: React.FC = () => {
 
       {/* Causes Start */}
       <div className="container-fluid causes section-padding">
-        <div className="container py-5">
+        <div className="container">
           <div className="text-center mx-auto pb-5" style={{ maxWidth: '800px' }}>
             <h5 className="text-uppercase text-primary">Some of Our Key Strengths</h5>
             <p className="mb-0">Empower your students with cultural immersion & dedicated support. We ensure a transformative, accessible global experience. Their future starts here!</p>
           </div>
           <div className="row g-4">
-            <div className="col-lg-6 col-xl-3">
+            <div className="col-md-6 col-lg-3">
               <div className="causes-item h-100 d-flex flex-column">
                 <div className="causes-img">
                   <img src="/img/causes-4.jpg" className="img-fluid w-100" alt="Educational Journey" />
@@ -117,7 +117,7 @@ const HomeEnPage: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="col-lg-6 col-xl-3">
+            <div className="col-md-6 col-lg-3">
               <div className="causes-item h-100 d-flex flex-column">
                 <div className="causes-img">
                   <img src="/img/keys-2.png" className="img-fluid w-100" alt="Dedicated Support" />
@@ -129,7 +129,7 @@ const HomeEnPage: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="col-lg-6 col-xl-3">
+            <div className="col-md-6 col-lg-3">
               <div className="causes-item h-100 d-flex flex-column">
                 <div className="causes-img">
                   <img src="/img/keys-3.png" className="img-fluid w-100" alt="Immersive Experience" />
@@ -141,7 +141,7 @@ const HomeEnPage: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="col-lg-6 col-xl-3">
+            <div className="col-md-6 col-lg-3">
               <div className="causes-item h-100 d-flex flex-column">
                 <div className="causes-img">
                   <img src="/img/keys-4.png" className="img-fluid w-100" alt="Shared Mission" />
@@ -159,7 +159,7 @@ const HomeEnPage: React.FC = () => {
 
       {/* About Start */}
       <div className="container-fluid about section-padding">
-        <div className="container py-5">
+        <div className="container">
           <div className="row g-5 align-items-center">
             <div className="col-xl-5">
               <img src="/img/about-1.jpg" className="img-fluid w-100 rounded" alt="Leadership Academy" />
@@ -177,7 +177,7 @@ const HomeEnPage: React.FC = () => {
 
       {/* Counter Start */}
       <div className="container-fluid counter section-padding" style={{ background: 'linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, 0.4)), url(/img/volunteers-bg.jpg) center center', backgroundSize: 'cover' }}>
-        <div className="container py-5">
+        <div className="container">
           <div className="text-center mx-auto pb-5" style={{ maxWidth: '800px' }}>
             <h5 className="text-uppercase text-primary">We Are Awesome At Our Work</h5>
             <p className="text-white mb-0">Our exchange program boasts impressive success rates, with countless transformative experiences and global connections established.</p>
@@ -229,27 +229,68 @@ const HomeEnPage: React.FC = () => {
 
       {/* Events Start */}
       <div className="container-fluid event section-padding">
-        <div className="container py-5">
+        <div className="container">
           <div className="text-center mx-auto mb-5" style={{ maxWidth: '800px' }}>
             <h5 className="text-uppercase text-primary">Recent Events</h5>
             <h1 className="mb-0">See what's happening in District 4510</h1>
           </div>
           <div className="row g-4">
-            <div className="col-md-6 col-lg-4">
+            <div className="col-md-6 col-lg-3">
               <div className="event-item h-100 d-flex flex-column">
                 <img src="/img/events-1.jpg" className="img-fluid w-100" alt="Orientation" />
-                <div className="event-content p-4 flex-grow-1">
+                <div className="event-content p-4 flex-grow-1 d-flex flex-column">
                   <div className="d-flex justify-content-between mb-4 small text-muted">
                     <span><i className="fas fa-map-marker-alt me-2"></i>Assis, SP</span>
                     <span><i className="fas fa-calendar-alt me-2"></i>Sep 13, 2025</span>
                   </div>
                   <h4 className="mb-4">1st Orientation Meeting</h4>
-                  <p className="mb-4">Standardizing information regarding the selection process. A crucial moment of alignment and transparency.</p>
+                  <p className="mb-4 flex-grow-1">Standardizing information regarding the selection process. A crucial moment of alignment and transparency.</p>
                   <Link className="btn-hover-bg btn btn-primary text-white py-2 px-4 mt-auto" to="/eventos">Learn more</Link>
                 </div>
               </div>
             </div>
-            {/* Add more events as needed */}
+            <div className="col-md-6 col-lg-3">
+              <div className="event-item h-100 d-flex flex-column">
+                <img src="/img/events-2.jpg" className="img-fluid w-100" alt="Institute" />
+                <div className="event-content p-4 flex-grow-1 d-flex flex-column">
+                  <div className="d-flex justify-content-between mb-4 small text-muted">
+                    <span><i className="fas fa-map-marker-alt me-2"></i>Maringá, PR</span>
+                    <span><i className="fas fa-calendar-alt me-2"></i>Sep 04, 2025</span>
+                  </div>
+                  <h4 className="mb-4">District 4510 at the 48th Rotary Institute</h4>
+                  <p className="mb-4 flex-grow-1">José Ronan, ABIJ President and D4510 YEP Committee member, was the main highlight, inspiring with his vision for the future.</p>
+                  <Link className="btn-hover-bg btn btn-primary text-white py-2 px-4 mt-auto" to="/eventos">Learn more</Link>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-6 col-lg-3">
+              <div className="event-item h-100 d-flex flex-column">
+                <img src="/img/events-3.jpg" className="img-fluid w-100" alt="Conference" />
+                <div className="event-content p-4 flex-grow-1 d-flex flex-column">
+                  <div className="d-flex justify-content-between mb-4 small text-muted">
+                    <span><i className="fas fa-map-marker-alt me-2"></i>Paraguaçu, SP</span>
+                    <span><i className="fas fa-calendar-alt me-2"></i>Aug 26, 2025</span>
+                  </div>
+                  <h4 className="mb-4">District Youth Exchange Conference</h4>
+                  <p className="mb-4 flex-grow-1">Gathering about 70 exchange students from different countries for cultural exchange and friendship.</p>
+                  <Link className="btn-hover-bg btn btn-primary text-white py-2 px-4 mt-auto" to="/eventos">Learn more</Link>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-6 col-lg-3">
+              <div className="event-item h-100 d-flex flex-column">
+                <img src="/img/events-4.jpg" className="img-fluid w-100" alt="Trip" />
+                <div className="event-content p-4 flex-grow-1 d-flex flex-column">
+                  <div className="d-flex justify-content-between mb-4 small text-muted">
+                    <span><i className="fas fa-map-marker-alt me-2"></i>Foz do Iguaçu, PR</span>
+                    <span><i className="fas fa-calendar-alt me-2"></i>Sep 23, 2025</span>
+                  </div>
+                  <h4 className="mb-4">Inbounds Trip to Foz do Iguaçu</h4>
+                  <p className="mb-4 flex-grow-1">Experiencing the grandeur of Foz do Iguaçu, a trip carefully planned for cultural enrichment.</p>
+                  <Link className="btn-hover-bg btn btn-primary text-white py-2 px-4 mt-auto" to="/eventos">Learn more</Link>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

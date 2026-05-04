@@ -67,10 +67,10 @@ export default function HomePage() {
 
       {/* YEP 4510 Start */}
       <div className="container-fluid donation section-padding">
-        <div className="container py-5">
-          <div className="row g-6">
-            <div className="col-lg-6 py-3">
-              <div className="donation-item">
+        <div className="container">
+          <div className="row g-4">
+            <div className="col-md-6 mb-4">
+              <div className="donation-item h-100">
                 <img src="/img/yep4510-1.png" className="img-fluid w-100" alt="Mapa do distrito 4510" />
                 <div className="donation-content d-flex flex-column">
                   <h5 className="text-uppercase text-primary mb-4">Excelência e Credibilidade</h5>
@@ -80,17 +80,17 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-            <div className="col-lg-6 py-3">
-              <div className="donation-item">
+            <div className="col-md-6 py-3">
+              <div className="donation-item position-relative">
+                <div className="position-absolute" style={{ top: '20px', left: '20px', zIndex: 10 }}>
+                  <a className="btn-hover-bg btn btn-primary text-white py-2 px-4 shadow-sm" href="https://online.fliphtml5.com/50anosYEP4510/kbat/#p=1" target="_blank" rel="noreferrer">Clique para ler!</a>
+                </div>
                 <img src="/img/yep4510-2.png" className="img-fluid w-100" alt="Image" />
                 <div className="donation-content d-flex flex-column">
                   <h5 className="text-uppercase text-primary mb-4">Experiência e Tradição</h5>
                   <span className="btn-hover-color display-6 text-white" style={{ cursor: 'default' }}>Memória do RYE D4510:</span>
                   <h4 className="text-white mb-4">50 anos de intercâmbio de Jovens</h4>
                   <p className="text-white mb-4">Com profunda alegria e senso de responsabilidade histórica que apresentamos esse livro: Memória viva do YEP 4510: 50 anos de intercâmbio de Jovens. Esta obra celebra uma trajetória que não é apenas institucional, mas também profundamente humana – feita de encontros, aprendizados e transformações que atravessam fronteiras, culturas e gerações.</p>
-                  <div className="donation-btn d-flex align-items-center justify-content-start">
-                    <a className="btn-hover-bg btn btn-primary text-white py-2 px-4" href="https://online.fliphtml5.com/50anosYEP4510/kbat/#p=1" target="_blank" rel="noreferrer">Clique para ler!</a>
-                  </div>
                 </div>
               </div>
             </div>
@@ -101,13 +101,13 @@ export default function HomePage() {
 
       {/* Causes Start */}
       <div className="container-fluid causes section-padding">
-        <div className="container py-5">
+        <div className="container">
           <div className="text-center mx-auto pb-5" style={{ maxWidth: '800px' }}>
             <h5 className="text-uppercase text-primary">Algumas características</h5>
             <p className="mb-0">Desenvolva seu potencial global! Viva uma imersão cultural com apoio dedicado, tornando sua vivência internacional transformadora e ao seu alcance. Seu futuro começa aqui!</p>
           </div>
           <div className="row g-4">
-            <div className="col-lg-6 col-xl-3">
+            <div className="col-md-6 col-lg-3">
               <div className="causes-item">
                 <div className="causes-img">
                   <img src="/img/causes-4.jpg" className="img-fluid w-100" alt="Image" />
@@ -120,7 +120,7 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-            <div className="col-lg-6 col-xl-3">
+            <div className="col-md-6 col-lg-3">
               <div className="causes-item">
                 <div className="causes-img">
                   <img src="/img/causes-2.jpg" className="img-fluid w-100" alt="Image" />
@@ -133,7 +133,7 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-            <div className="col-lg-6 col-xl-3">
+            <div className="col-md-6 col-lg-3">
               <div className="causes-item">
                 <div className="causes-img">
                   <img src="/img/causes-3.jpg" className="img-fluid w-100" alt="Image" />
@@ -146,7 +146,7 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-            <div className="col-lg-6 col-xl-3">
+            <div className="col-md-6 col-lg-3">
               <div className="causes-item">
                 <div className="causes-img">
                   <img src="/img/causes-1.jpg" className="img-fluid w-100" alt="Image" />
@@ -166,7 +166,7 @@ export default function HomePage() {
 
       {/* About Start */}
       <div className="container-fluid about section-padding">
-        <div className="container py-5">
+        <div className="container">
           <div className="row g-5 align-items-center">
             <div className="col-xl-5">
               <div className="position-relative">
@@ -188,7 +188,7 @@ export default function HomePage() {
 
       {/* Counter Start */}
       <div className="container-fluid counter section-padding" style={{ background: 'linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, 0.4)), url(/img/volunteers-bg.jpg) center center', backgroundSize: 'cover' }}>
-        <div className="container py-5">
+        <div className="container">
           <div className="text-center mx-auto pb-5" style={{ maxWidth: '800px' }}>
             <h5 className="text-uppercase text-primary">Somos incríveis em nosso trabalho</h5>
             <p className="text-white mb-0">Nosso programa de intercâmbio apresenta taxas de sucesso impressionantes, com inúmeras experiências transformadoras e conexões globais estabelecidas.</p>
@@ -246,7 +246,7 @@ export default function HomePage() {
 
       {/* Events Start */}
       <div className="container-fluid event section-padding">
-        <div className="container py-5">
+        <div className="container">
           <div className="text-center mx-auto mb-5" style={{ maxWidth: '800px' }}>
             <h5 className="text-uppercase text-primary">Eventos Recentes</h5>
             <h1 className="mb-0">Veja o que está acontecendo no Distrito 4510 relacionado ao Intercâmbio de Jovens do Rotary</h1>
