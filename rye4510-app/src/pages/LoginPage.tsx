@@ -38,12 +38,12 @@ const LoginPage: React.FC = () => {
       
       <div className="container py-5">
         <div className="row justify-content-center">
-          <div className="col-md-5">
+          <div className="col-11 col-sm-10 col-md-8 col-lg-5">
             <div className="card shadow-lg border-0 rounded-4 overflow-hidden">
               <div className="card-header bg-primary py-4 text-center">
                 <img src="/img/rye-logo.png" alt="Logo" style={{ height: '40px', filter: 'brightness(0) invert(1)' }} />
               </div>
-              <div className="card-body p-5">
+              <div className="card-body p-4 p-sm-5">
                 <h2 className="text-center mb-4 fw-bold">Login</h2>
                 
                 {error && (
