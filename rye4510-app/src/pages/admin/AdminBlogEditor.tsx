@@ -92,35 +92,54 @@ const AdminBlogEditor: React.FC = () => {
     }
 
     setLoading(true);
+    console.log('Iniciando salvamento...', post);
+
     try {
-      const { data: { user } } = await supabase.auth.getUser();
+      const { data: { user }, error: authError } = await supabase.auth.getUser();
       
+      if (authError || !user) {
+        alert('Sessão expirada. Por favor, faça login novamente.');
+        navigate('/login');
+        return;
+      }
+
+      // Limpar campos nulos para evitar erro de tipo no Postgres
+      const cleanPost = { ...post };
+      Object.keys(cleanPost).forEach(key => {
+        if ((cleanPost as any)[key] === '') (cleanPost as any)[key] = null;
+      });
+
       const postData = {
-        ...post,
-        author_id: user?.id,
+        ...cleanPost,
+        author_id: user.id,
         updated_at: new Date().toISOString(),
         published_at: post.published ? (new Date().toISOString()) : (post as any).published_at,
       };
 
-      let error;
+      console.log('Dados preparados para envio:', postData);
+
+      let result;
       if (id) {
-        const { error: err } = await supabase.from('posts').update(postData).eq('id', id);
-        error = err;
+        result = await supabase.from('posts').update(postData).eq('id', id);
       } else {
-        const { error: err } = await supabase.from('posts').insert([postData]);
-        error = err;
+        result = await supabase.from('posts').insert([postData]);
       }
 
-      if (!error) {
+      if (!result.error) {
         alert('Artigo salvo com sucesso!');
         navigate('/admin/blog');
       } else {
-        console.error('Erro ao salvar:', error);
-        alert('Erro ao salvar no banco de dados: ' + error.message + '\n\nVerifique se você executou o comando SQL para as 7 seções.');
+        console.error('Erro detalhado do Supabase:', result.error);
+        
+        let msg = 'Erro ao salvar no banco de dados: ' + result.error.message;
+        if (result.error.code === '23505') msg = 'Erro: Já existe um artigo com este título/URL (Slug duplicado).';
+        if (result.error.code === '42703') msg = 'Erro: Colunas faltando no banco de dados. Por favor, execute o comando SQL das 7 seções no painel do Supabase.';
+        
+        alert(msg);
       }
     } catch (err: any) {
-      console.error('Erro de exceção:', err);
-      alert('Erro inesperado: ' + err.message);
+      console.error('Erro de exceção inesperado:', err);
+      alert('Erro inesperado no sistema: ' + err.message);
     } finally {
       setLoading(false);
     }
