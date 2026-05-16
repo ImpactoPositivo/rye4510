@@ -1,7 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { supabase } from '../lib/supabase';
 
 export default function HomePage() {
+  const [events, setEvents] = useState<any[]>([]);
+  const [loadingEvents, setLoadingEvents] = useState(true);
+
+  useEffect(() => {
+    fetchEvents();
+  }, []);
+
+  const fetchEvents = async () => {
+    const { data, error } = await supabase
+      .from('events')
+      .select('*')
+      .order('date', { ascending: false })
+      .limit(4);
+    if (!error) setEvents(data || []);
+    setLoadingEvents(false);
+  };
+
   return (
     <>
       {/* Carousel Start */}
@@ -178,7 +196,7 @@ export default function HomePage() {
               <h1 className="mb-4">Transformando Jovens em Líderes:<br/>A Academia de Liderança do Rotary</h1>
               <p className="fs-5 mb-4">Quando consideramos o futuro de nossos filhos, buscamos oportunidades que catalisem seu crescimento pessoal, acadêmico e profissional. O Programa de Intercâmbio do Rotary oferece exatamente isso: uma academia de liderança que prepara jovens para se tornarem cidadãos globais e líderes competentes.</p>
               <p className="fs-5 mb-4">Ao longo de um ano preparatório, com seis dias completos de treinamento, os participantes são imersos em atividades que desafiam e expandem suas capacidades de comunicação, liderança e compreensão intercultural. Esse processo meticuloso não apenas prepara o jovem para seu ano acadêmico no exterior, mas também fomenta uma base sólida para o desenvolvimento de habilidades essenciais.</p>
-              <p className="fs-5 mb-4">Durante o intercâmbio, o jovem vive uma experiência única de aprendizado, imerso em uma nova cultura e idioma, o que estimula a autoconfiança e a adaptabilidade. Ao retornar, o envolvimento contínuo com os programas juvenis do Rotary cimenta essa transformação, reforçando sua posição como um líder influente.</p>
+              <p className="fs-5 mb-4">Durante o intercâmbio, o jovem vive uma experience única de aprendizado, imerso em uma nova cultura e idioma, o que estimula a autoconfiança e a adaptabilidade. Ao retornar, o envolvimento contínuo com os programas juvenis do Rotary cimenta essa transformação, reforçando sua posição como um líder influente.</p>
               <p className="fs-5 mb-4">Essa jornada não apenas desenvolve todo o potencial de comunicação do jovem, mas também o prepara para ser um cidadão do mundo, com capacidades desenvolvidas que farão toda a diferença em seu futuro. Encorajamos vocês a considerarem essa oportunidade inestimável, garantindo um legado de liderança e sucesso para seus filhos.</p>
             </div>
           </div>
@@ -252,62 +270,32 @@ export default function HomePage() {
             <h1 className="mb-0">Veja o que está acontecendo no Distrito 4510 relacionado ao Intercâmbio de Jovens do Rotary</h1>
           </div>
           <div className="row g-4">
-            <div className="col-md-6 col-lg-3">
-              <div className="event-item h-100 d-flex flex-column">
-                <img src="/img/events-1.jpg" className="img-fluid w-100" alt="Image" />
-                <div className="event-content p-4 flex-grow-1 d-flex flex-column">
-                  <div className="d-flex justify-content-between mb-4">
-                    <span className="text-body"><i className="fas fa-map-marker-alt me-2"></i>Assis, SP.</span>
-                    <span className="text-body"><i className="fas fa-calendar-alt me-2"></i>13 Set, 2025</span>
-                  </div>
-                  <h4 className="mb-4">1º Treinamento de Famílias e Candidatos, ano 2026-27</h4>
-                  <p className="mb-4 flex-grow-1">Após a data final para inscrição, candidatos e pais, junto ao comitê e Oficiais de clube, se reuniram. O encontro visou uniformizar as informações do processo seletivo do programa. Foi um momento essencial de alinhamento e transparência, garantindo que todos estivessem prontos para a emocionante jornada do intercâmbio. Início de uma nova fase.</p>
-                  <Link className="btn-hover-bg btn btn-primary text-white py-2 px-4 mt-auto" to="/eventos">Saiba mais</Link>
-                </div>
+            {loadingEvents ? (
+              <div className="col-12 text-center py-5">
+                <div className="spinner-border text-primary" role="status"></div>
               </div>
-            </div>
-            <div className="col-md-6 col-lg-3">
-              <div className="event-item h-100 d-flex flex-column">
-                <img src="/img/events-2.jpg" className="img-fluid w-100" alt="Image" />
-                <div className="event-content p-4 flex-grow-1 d-flex flex-column">
-                  <div className="d-flex justify-content-between mb-4">
-                    <span className="text-body"><i className="fas fa-map-marker-alt me-2"></i>Maringá, PR.</span>
-                    <span className="text-body"><i className="fas fa-calendar-alt me-2"></i>04 Set, 2025</span>
-                  </div>
-                  <h4 className="mb-4">Distrito 4510 presente no 48º Instituto Rotary Brasil</h4>
-                  <p className="mb-4 flex-grow-1">José Ronan Simões Ribeiro, presidente da Associação Brasileira de Intercâmbio de Jovens (ABIJ) e membro do Comitê YEP do Distrito 4510, foi o grande destaque. Ele atuou como palestrante no principal evento rotário do Brasil, levando sua vasta experiência e inspirando com a visão para o futuro do intercâmbio de jovens. Um momento de liderança.</p>
-                  <Link className="btn-hover-bg btn btn-primary text-white py-2 px-4 mt-auto" to="/eventos">Saiba mais</Link>
-                </div>
+            ) : events.length === 0 ? (
+              <div className="col-12 text-center py-5">
+                <p className="text-muted">Fique atento! Novos eventos serão anunciados em breve.</p>
               </div>
-            </div>
-            <div className="col-md-6 col-lg-3">
-              <div className="event-item h-100 d-flex flex-column">
-                <img src="/img/events-3.jpg" className="img-fluid w-100" alt="Image" />
-                <div className="event-content p-4 flex-grow-1 d-flex flex-column">
-                  <div className="d-flex justify-content-between mb-4">
-                    <span className="text-body"><i className="fas fa-map-marker-alt me-2"></i>Paraguaçu Paulista, SP.</span>
-                    <span className="text-body"><i className="fas fa-calendar-alt me-2"></i>26 Ago, 2025</span>
+            ) : (
+              events.map((event) => (
+                <div key={event.id} className="col-md-6 col-lg-3">
+                  <div className="event-item h-100 d-flex flex-column">
+                    <img src={event.image_url || '/img/events-1.jpg'} className="img-fluid w-100" alt={event.title} style={{ height: '200px', objectFit: 'cover' }} />
+                    <div className="event-content p-4 flex-grow-1 d-flex flex-column">
+                      <div className="d-flex justify-content-between mb-4">
+                        <span className="text-body small"><i className="fas fa-map-marker-alt me-2"></i>{event.location}</span>
+                        <span className="text-body small"><i className="fas fa-calendar-alt me-2"></i>{new Date(event.date).toLocaleDateString('pt-BR', { day: '2-digit', month: 'short' })}</span>
+                      </div>
+                      <h4 className="mb-4 h5 fw-bold">{event.title}</h4>
+                      <p className="mb-4 small flex-grow-1 text-muted">{event.description}</p>
+                      <Link className="btn-hover-bg btn btn-primary text-white py-2 px-4 mt-auto" to="/eventos">Saiba mais</Link>
+                    </div>
                   </div>
-                  <h4 className="mb-4">Conferência Distrital de Intercâmbio de Jovens</h4>
-                  <p className="mb-4 flex-grow-1"> No último sábado, o Rotary Club de Paraguaçu Paulista recebeu a Conferência Distrital de Intercâmbio de Jovens, reunindo cerca de 70 intercambistas de diferentes países. O Rotaract esteve presente, fortalecendo o companheirismo e vivendo ali momentos de troca cultural, amizade e aprendizado que só o programa de intercâmbio pode proporcionar.</p>
-                  <Link className="btn-hover-bg btn btn-primary text-white py-2 px-4 mt-auto" to="/eventos">Saiba mais</Link>
                 </div>
-              </div>
-            </div>
-            <div className="col-md-6 col-lg-3">
-              <div className="event-item h-100 d-flex flex-column">
-                <img src="/img/events-4.jpg" className="img-fluid w-100" alt="Image" />
-                <div className="event-content p-4 flex-grow-1 d-flex flex-column">
-                  <div className="d-flex justify-content-between mb-4">
-                    <span className="text-body"><i className="fas fa-map-marker-alt me-2"></i>Foz do Iguaçu, PR.</span>
-                    <span className="text-body"><i className="fas fa-calendar-alt me-2"></i>23 Set, 2025</span>
-                  </div>
-                  <h4 className="mb-4">Viagem de Inbounds para Foz de Iguaçu</h4>
-                  <p className="mb-4 flex-grow-1">Nesta semana, os estudantes inbounds do Distrito 4510 estão desfrutando e vivenciando a grandiosidade de Foz do Iguaçu, numa viagem cuidadosamente planejada pelo nosso distrito. O PDG Alonso Campoi, membro experiente do Comitê do D4510, atua como Chaperone, zelando por uma experiência cultural enriquecedora e inesquecível para o grupo de jovens.</p>
-                  <Link className="btn-hover-bg btn btn-primary text-white py-2 px-4 mt-auto" to="/eventos">Saiba mais</Link>
-                </div>
-              </div>
-            </div>
+              ))
+            )}
           </div>
         </div>
       </div>

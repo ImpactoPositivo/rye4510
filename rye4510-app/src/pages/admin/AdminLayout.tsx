@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Navigate, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { supabase } from '../../lib/supabase';
-import { LayoutDashboard, FileText, Users, LogOut, Home, Menu, X } from 'lucide-react';
+import { LayoutDashboard, FileText, Users, LogOut, Home, Menu, X, Image as ImageIcon, Calendar } from 'lucide-react';
 
 const AdminLayout: React.FC = () => {
   const [loading, setLoading] = useState(true);
@@ -41,6 +41,8 @@ const AdminLayout: React.FC = () => {
   const menuItems = [
     { label: 'Dashboard', icon: <LayoutDashboard size={20} />, path: '/admin' },
     { label: 'Gerenciar Blog', icon: <FileText size={20} />, path: '/admin/blog' },
+    { label: 'Gerenciar Galeria', icon: <ImageIcon size={20} />, path: '/admin/gallery' },
+    { label: 'Gerenciar Eventos', icon: <Calendar size={20} />, path: '/admin/events' },
     { label: 'Usuários Admin', icon: <Users size={20} />, path: '/admin/users' },
   ];
 

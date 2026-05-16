@@ -24,6 +24,9 @@ import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminBlogList from './pages/admin/AdminBlogList';
 import AdminBlogEditor from './pages/admin/AdminBlogEditor';
 import AdminUsers from './pages/admin/AdminUsers';
+import AdminGallery from './pages/admin/AdminGallery';
+import AdminEvents from './pages/admin/AdminEvents';
+import AdminEventEditor from './pages/admin/AdminEventEditor';
 
 export default function App() {
   return (
@@ -80,6 +83,10 @@ export default function App() {
           <Route path="blog/new" element={<AdminBlogEditor />} />
           <Route path="blog/edit/:id" element={<AdminBlogEditor />} />
           <Route path="users" element={<AdminUsers />} />
+          <Route path="gallery" element={<AdminGallery />} />
+          <Route path="events" element={<AdminEvents />} />
+          <Route path="events/new" element={<AdminEventEditor />} />
+          <Route path="events/edit/:id" element={<AdminEventEditor />} />
         </Route>
       </Routes>
     </BrowserRouter>
