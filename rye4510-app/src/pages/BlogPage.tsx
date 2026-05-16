@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
-import { SearchPlus } from 'lucide-react'; // Placeholder for search icon
 
 const BlogPage: React.FC = () => {
   const [posts, setPosts] = useState<any[]>([]);
