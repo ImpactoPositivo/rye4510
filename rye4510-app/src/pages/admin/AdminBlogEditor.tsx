@@ -86,9 +86,15 @@ const AdminBlogEditor: React.FC = () => {
   };
 
   const handleSave = async () => {
+    if (!post.title) {
+      alert('Por favor, insira um título para o artigo.');
+      return;
+    }
+
     setLoading(true);
     try {
-      const user = (await supabase.auth.getUser()).data.user;
+      const { data: { user } } = await supabase.auth.getUser();
+      
       const postData = {
         ...post,
         author_id: user?.id,
@@ -105,10 +111,16 @@ const AdminBlogEditor: React.FC = () => {
         error = err;
       }
 
-      if (!error) navigate('/admin/blog');
-      else alert('Erro: ' + error.message);
+      if (!error) {
+        alert('Artigo salvo com sucesso!');
+        navigate('/admin/blog');
+      } else {
+        console.error('Erro ao salvar:', error);
+        alert('Erro ao salvar no banco de dados: ' + error.message + '\n\nVerifique se você executou o comando SQL para as 7 seções.');
+      }
     } catch (err: any) {
-      alert('Erro: ' + err.message);
+      console.error('Erro de exceção:', err);
+      alert('Erro inesperado: ' + err.message);
     } finally {
       setLoading(false);
     }
@@ -216,9 +228,14 @@ const AdminBlogEditor: React.FC = () => {
           <button onClick={() => navigate('/admin/blog')} className="btn btn-white border rounded-pill px-4 shadow-sm">
             <X size={18} className="me-2" /> Cancelar
           </button>
-          <button onClick={handleSave} disabled={loading || uploading} className="btn btn-primary rounded-pill px-4 shadow-sm">
+          <button 
+            onClick={handleSave} 
+            disabled={loading || uploading} 
+            className="btn btn-primary rounded-pill px-4 shadow-sm"
+            style={{ opacity: (loading || uploading) ? 0.6 : 1, cursor: (loading || uploading) ? 'not-allowed' : 'pointer' }}
+          >
             {loading ? <span className="spinner-border spinner-border-sm me-2"></span> : <Save size={18} className="me-2" />}
-            Publicar Artigo Completo
+            {loading ? 'Salvando...' : 'Publicar Artigo Completo'}
           </button>
         </div>
       </div>
