@@ -86,22 +86,26 @@ const AdminBlogEditor: React.FC = () => {
   };
 
   const handleSave = async () => {
+    console.log('Botão Salvar clicado');
     if (!post.title) {
-      alert('Por favor, insira um título para o artigo.');
+      window.alert('Por favor, insira um título para o artigo.');
       return;
     }
 
     setLoading(true);
-    console.log('Iniciando salvamento...', post);
-
+    
     try {
+      console.log('Obtendo usuário...');
       const { data: { user }, error: authError } = await supabase.auth.getUser();
       
       if (authError || !user) {
-        alert('Sessão expirada. Por favor, faça login novamente.');
-        navigate('/login');
+        window.alert('Sessão expirada ou usuário não encontrado. Por favor, saia e entre novamente no sistema.');
+        console.error('Erro de Auth:', authError);
+        setLoading(false);
         return;
       }
+
+      console.log('Usuário autenticado:', user.id);
 
       // Limpar campos nulos para evitar erro de tipo no Postgres
       const cleanPost = { ...post };
@@ -113,10 +117,10 @@ const AdminBlogEditor: React.FC = () => {
         ...cleanPost,
         author_id: user.id,
         updated_at: new Date().toISOString(),
-        published_at: post.published ? (new Date().toISOString()) : (post as any).published_at,
+        published_at: post.published ? (new Date().toISOString()) : (post as any).published_at || null,
       };
 
-      console.log('Dados preparados para envio:', postData);
+      console.log('Enviando para o Supabase...', postData);
 
       let result;
       if (id) {
@@ -125,21 +129,24 @@ const AdminBlogEditor: React.FC = () => {
         result = await supabase.from('posts').insert([postData]);
       }
 
+      console.log('Resposta do Supabase:', result);
+
       if (!result.error) {
-        alert('Artigo salvo com sucesso!');
+        window.alert('Artigo salvo com sucesso!');
         navigate('/admin/blog');
       } else {
-        console.error('Erro detalhado do Supabase:', result.error);
+        console.error('Erro retornado pelo Supabase:', result.error);
         
-        let msg = 'Erro ao salvar no banco de dados: ' + result.error.message;
-        if (result.error.code === '23505') msg = 'Erro: Já existe um artigo com este título/URL (Slug duplicado).';
-        if (result.error.code === '42703') msg = 'Erro: Colunas faltando no banco de dados. Por favor, execute o comando SQL das 7 seções no painel do Supabase.';
+        let msg = 'Erro técnico: ' + result.error.message;
+        if (result.error.code === '23505') msg = 'Já existe um artigo com este título ou URL amigável.';
+        if (result.error.code === '42703') msg = 'Estrutura do banco de dados desatualizada. Por favor, execute o SQL das 7 seções.';
+        if (result.error.code === '42P01') msg = 'A tabela "posts" não foi encontrada. Verifique o banco de dados.';
         
-        alert(msg);
+        window.alert(msg);
       }
     } catch (err: any) {
-      console.error('Erro de exceção inesperado:', err);
-      alert('Erro inesperado no sistema: ' + err.message);
+      console.error('Erro catastrófico no código:', err);
+      window.alert('Erro interno do sistema: ' + err.message);
     } finally {
       setLoading(false);
     }
@@ -286,7 +293,11 @@ const AdminBlogEditor: React.FC = () => {
           </div>
 
           {/* Structured Sections */}
-          {[1, 2, 3, 4, 5, 6, 7].map(n => renderSectionField(n))}
+          {[1, 2, 3, 4, 5, 6, 7].map(n => (
+            <div key={n}>
+              {renderSectionField(n)}
+            </div>
+          ))}
         </div>
 
         <div className="col-lg-4">
