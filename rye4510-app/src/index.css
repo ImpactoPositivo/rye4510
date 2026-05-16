@@ -82,6 +82,7 @@ h1, h2, h3, h4, h5, h6 {
   animation: spin .8s linear infinite;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
+.animate-spin { animation: spin 1s linear infinite; }
 
 /* ── Buttons ── */
 .btn {
@@ -279,3 +280,10 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1.4rem !important;
   margin-bottom: 1rem;
 }
+
+/* ── Admin Dashboard & Editor ── */
+.admin-sidebar { transition: width 0.3s ease-in-out; border-right: 1px solid #eee; }
+.hover-bg-light:hover { background-color: #f8f9fa; }
+.admin-nav-item .nav-link.active { background-color: var(--primary) !important; color: white !important; }
+.quill-container .ql-toolbar { border-top-left-radius: 12px; border-top-right-radius: 12px; background: #f8f9fa; }
+.quill-container .ql-container { border-bottom-left-radius: 12px; border-bottom-right-radius: 12px; }

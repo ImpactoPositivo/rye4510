@@ -10,6 +10,7 @@ import ProgramasPage from './pages/ProgramasPage';
 import DistritoPage from './pages/DistritoPage';
 import TreinamentosPage from './pages/TreinamentosPage';
 import BlogPage from './pages/BlogPage';
+import BlogPostDetail from './pages/BlogPostDetail';
 import GaleriaPage from './pages/GaleriaPage';
 import VoluntariosPage from './pages/VoluntariosPage';
 import ClubesPage from './pages/ClubesPage';
@@ -17,6 +18,12 @@ import ClubesIframePage from './pages/ClubesIframePage';
 import TreinamentosClubesPage from './pages/TreinamentosClubesPage';
 import DownloadsClubesPage from './pages/DownloadsClubesPage';
 import HomeEnPage from './pages/HomeEnPage';
+import LoginPage from './pages/LoginPage';
+import AdminLayout from './pages/admin/AdminLayout';
+import AdminDashboard from './pages/admin/AdminDashboard';
+import AdminBlogList from './pages/admin/AdminBlogList';
+import AdminBlogEditor from './pages/admin/AdminBlogEditor';
+import AdminUsers from './pages/admin/AdminUsers';
 
 export default function App() {
   return (
@@ -53,15 +60,26 @@ export default function App() {
 
           {/* Mais */}
           <Route path="/blog"                    element={<BlogPage />} />
+          <Route path="/blog/:slug"              element={<BlogPostDetail />} />
           <Route path="/galeria"                 element={<GaleriaPage />} />
           <Route path="/voluntarios"             element={<VoluntariosPage />} />
           <Route path="/inscricao"               element={<InscricaoPage />} />
 
           {/* Contato */}
           <Route path="/contato"                 element={<ContatoPage />} />
+          <Route path="/login"                   element={<LoginPage />} />
 
           {/* 404 */}
           <Route path="*"                        element={<HomePage />} />
+        </Route>
+
+        {/* Admin Routes */}
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<AdminDashboard />} />
+          <Route path="blog" element={<AdminBlogList />} />
+          <Route path="blog/new" element={<AdminBlogEditor />} />
+          <Route path="blog/edit/:id" element={<AdminBlogEditor />} />
+          <Route path="users" element={<AdminUsers />} />
         </Route>
       </Routes>
     </BrowserRouter>

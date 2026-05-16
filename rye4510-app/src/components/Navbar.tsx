@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Mail, Phone, ChevronDown } from 'lucide-react';
-import { FaFacebook, FaInstagram, FaYoutube } from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaYoutube, FaUser, FaSignOutAlt } from 'react-icons/fa';
+import { supabase } from '../lib/supabase';
 import './layout.css';
 
 const navItems = [
@@ -51,7 +52,24 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [openMobSub, setOpenMobSub] = useState<string | null>(null);
+  const [user, setUser] = useState<any>(null);
   const location = useLocation();
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+    });
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+  };
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 60);
@@ -123,6 +141,17 @@ export default function Navbar() {
             <a href="https://www.youtube.com/channel/UCQScU_raNswx3TBhQHRmF7g" target="_blank" rel="noreferrer"><FaYoutube size={14} /></a>
             <Link to="/en"><img className="flag-icon" src="/img/flag-usa-color.png" alt="English" /></Link>
             <Link to="/"><img className="flag-icon" src="/img/flag-brazil-color.png" alt="Português" /></Link>
+            
+            {user ? (
+              <div className="nav-user-actions" style={{ display: 'flex', gap: '10px', alignItems: 'center', marginLeft: '10px', paddingLeft: '10px', borderLeft: '1px solid rgba(255,255,255,0.2)' }}>
+                <Link to="/admin" title="Painel Administrativo" style={{ color: 'white' }}><FaUser size={14} /></Link>
+                <button onClick={handleLogout} title="Sair" style={{ background: 'none', border: 'none', color: 'white', cursor: 'pointer', padding: 0 }}><FaSignOutAlt size={14} /></button>
+              </div>
+            ) : (
+              <Link to="/login" title="Login Administrativo" style={{ color: 'white', marginLeft: '10px', paddingLeft: '10px', borderLeft: '1px solid rgba(255,255,255,0.2)' }}>
+                <FaUser size={14} />
+              </Link>
+            )}
           </div>
         </div>
 
@@ -203,6 +232,16 @@ export default function Navbar() {
         )}
         <div className="mobile-nav-footer">
           <Link to="/inscricao" className="btn btn-primary">{isEn ? "Contact us" : "Inscreva-se"}</Link>
+          <div style={{ marginTop: '20px', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '20px' }}>
+            {user ? (
+              <>
+                <Link to="/admin" style={{ display: 'block', marginBottom: '15px' }}><FaUser size={14} className="me-2" /> Painel Admin</Link>
+                <button onClick={handleLogout} className="btn btn-outline-light btn-sm w-100"><FaSignOutAlt size={14} className="me-2" /> Sair</button>
+              </>
+            ) : (
+              <Link to="/login" className="btn btn-outline-light btn-sm w-100"><FaUser size={14} className="me-2" /> Login Admin</Link>
+            )}
+          </div>
         </div>
       </div>
     </>

@@ -1,34 +1,27 @@
 import React from 'react';
 import PageHero from '../components/PageHero';
-import { Calendar, User, ArrowRight } from 'lucide-react';
+import { Calendar, User, ArrowRight, Loader2 } from 'lucide-react';
+import { supabase } from '../lib/supabase';
+import { Link } from 'react-router-dom';
 
 const BlogPage: React.FC = () => {
-  const posts = [
-    {
-      id: 1,
-      title: 'Inscrições abertas para o intercâmbio 2026/27',
-      excerpt: 'Começou o processo seletivo para a próxima turma de embaixadores do Distrito 4510.',
-      date: '15 Mai 2025',
-      author: 'Distrito 4510',
-      image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=800'
-    },
-    {
-      id: 2,
-      title: 'Relato: Meu ano na Alemanha',
-      excerpt: 'Confira a história da Giulia e como o intercâmbio mudou sua percepção de mundo.',
-      date: '10 Mai 2025',
-      author: 'Giulia R.',
-      image: 'https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&q=80&w=800'
-    },
-    {
-      id: 3,
-      title: 'Dicas para a primeira entrevista',
-      excerpt: 'Saiba o que os avaliadores do Rotary buscam em um candidato ideal.',
-      date: '02 Mai 2025',
-      author: 'Comissão RYE',
-      image: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=800'
-    }
-  ];
+  const [posts, setPosts] = React.useState<any[]>([]);
+  const [loading, setLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    const fetchPosts = async () => {
+      const { data, error } = await supabase
+        .from('posts')
+        .select('*')
+        .eq('published', true)
+        .order('published_at', { ascending: false });
+
+      if (!error) setPosts(data || []);
+      setLoading(false);
+    };
+
+    fetchPosts();
+  }, []);
 
   return (
     <div className="blog-page">
@@ -40,28 +33,40 @@ const BlogPage: React.FC = () => {
 
       <section className="section">
         <div className="container">
-          <div className="row g-4">
-            {posts.map((post) => (
-              <div key={post.id} className="col-md-6 col-lg-4">
-                <article className="card h-100 border-0 shadow-sm overflow-hidden">
-                  <div className="ratio ratio-16x9">
-                    <img src={post.image} alt={post.title} className="img-fluid object-fit-cover" />
-                  </div>
-                  <div className="p-4">
-                    <div className="d-flex gap-3 mb-2 small text-muted">
-                      <span className="d-flex align-items-center gap-1"><Calendar size={14} /> {post.date}</span>
-                      <span className="d-flex align-items-center gap-1"><User size={14} /> {post.author}</span>
+          {loading ? (
+            <div className="text-center py-5">
+              <Loader2 className="animate-spin text-primary mx-auto" size={48} />
+              <p className="mt-3 text-muted">Carregando artigos...</p>
+            </div>
+          ) : posts.length === 0 ? (
+            <div className="text-center py-5">
+              <h3 className="text-muted">Nenhum artigo publicado ainda.</h3>
+              <p>Fique atento às nossas atualizações!</p>
+            </div>
+          ) : (
+            <div className="row g-4">
+              {posts.map((post) => (
+                <div key={post.id} className="col-md-6 col-lg-4">
+                  <article className="card h-100 border-0 shadow-sm overflow-hidden">
+                    <div className="ratio ratio-16x9">
+                      <img src={post.image_url || 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=800'} alt={post.title} className="img-fluid object-fit-cover" />
                     </div>
-                    <h4 className="mb-3">{post.title}</h4>
-                    <p className="text-muted small mb-4">{post.excerpt}</p>
-                    <a href={`/blog/${post.id}`} className="link-primary fw-bold text-decoration-none d-flex align-items-center gap-2">
-                      Ler mais <ArrowRight size={16} />
-                    </a>
-                  </div>
-                </article>
-              </div>
-            ))}
-          </div>
+                    <div className="p-4">
+                      <div className="d-flex gap-3 mb-2 small text-muted">
+                        <span className="d-flex align-items-center gap-1"><Calendar size={14} /> {new Date(post.published_at || post.created_at).toLocaleDateString('pt-BR')}</span>
+                        <span className="d-flex align-items-center gap-1"><User size={14} /> {post.author || 'Distrito 4510'}</span>
+                      </div>
+                      <h4 className="mb-3">{post.title}</h4>
+                      <p className="text-muted small mb-4">{post.excerpt}</p>
+                      <Link to={`/blog/${post.slug}`} className="link-primary fw-bold text-decoration-none d-flex align-items-center gap-2">
+                        Ler mais <ArrowRight size={16} />
+                      </Link>
+                    </div>
+                  </article>
+                </div>
+              ))}
+            </div>
+          )}
           
           {/* Pagination Placeholder */}
           <div className="mt-5 d-flex justify-content-center">
