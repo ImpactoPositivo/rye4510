@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
-import { Loader2 } from 'lucide-react';
 
 const BlogPostDetail: React.FC = () => {
   const { slug } = useParams();
@@ -40,6 +39,20 @@ const BlogPostDetail: React.FC = () => {
     );
   }
 
+  const renderSection = (num: number) => {
+    const subtitle = post[`section${num}_subtitle`];
+    const content = post[`section${num}_content`];
+    
+    if (!subtitle && !content) return null;
+
+    return (
+      <div key={num} className="mb-5">
+        {subtitle && <h1 className="mb-2 article-topico"><strong>{subtitle}</strong></h1>}
+        {content && <div className="ali-text" dangerouslySetInnerHTML={{ __html: content }} />}
+      </div>
+    );
+  };
+
   return (
     <div className="blog-post-detail">
       {/* Header Start */}
@@ -49,8 +62,8 @@ const BlogPostDetail: React.FC = () => {
           <p className="fs-5 text-white mb-4">{post.title}</p>
           <ol className="breadcrumb justify-content-center mb-0">
             <li className="breadcrumb-item"><Link to="/">Home</Link></li>
-            <li className="breadcrumb-item"><a href="#">Mais</a></li>
-            <li className="breadcrumb-item active text-white">Blog</li>
+            <li className="breadcrumb-item"><Link to="/blog">Blog</Link></li>
+            <li className="breadcrumb-item active text-white">Leitura</li>
           </ol>    
         </div>
       </div>
@@ -59,49 +72,53 @@ const BlogPostDetail: React.FC = () => {
       {/* Artigo Start */}
       <div className="container-fluid about py-5">
         <div className="container py-5">
-          <div className="row g-5">
-            <article className="col-xl-8 ali-text">
-              {post.section1_subtitle && (
-                <h5 className="text-uppercase text-primary">{post.section1_subtitle}:</h5>
+          <div className="row justify-content-center">
+            <div className="col-lg-10 col-xl-8">
+              
+              {/* Seção 1 */}
+              <div className="mb-4">
+                {post.section1_subtitle && (
+                  <h5 className="text-uppercase text-primary">{post.section1_subtitle}:</h5>
+                )}
+                <div className="ali-text" dangerouslySetInnerHTML={{ __html: post.section1_content || post.content }} />
+              </div>
+
+              {/* Mídia Central */}
+              {post.image_url && (
+                <div className="article-pic my-5 text-center">
+                  {post.media_type === 'video' ? (
+                    <div className="ratio ratio-16x9 mb-3 shadow-sm rounded overflow-hidden">
+                      <iframe src={post.image_url} title="Video" allowFullScreen></iframe>
+                    </div>
+                  ) : (
+                    <div className="d-inline-block shadow-lg rounded overflow-hidden" style={{ maxWidth: '100%' }}>
+                      <img 
+                        src={post.image_url} 
+                        alt={post.title} 
+                        className="img-fluid" 
+                        style={{ maxHeight: '800px', objectFit: 'contain' }} 
+                      />
+                    </div>
+                  )}
+                </div>
               )}
-              <div dangerouslySetInnerHTML={{ __html: post.section1_content || post.content }} />
-            </article>
-          </div>
-        </div>
-      </div>
 
-      {post.image_url && (
-        <div className="container col-xl-8 article-pic">
-          {post.media_type === 'video' ? (
-             <div className="ratio ratio-16x9 mb-3">
-               <iframe src={post.image_url} title="Video" allowFullScreen></iframe>
-             </div>
-          ) : (
-            <img src={post.image_url} alt={post.title} className="img-fluid rounded shadow-sm" />
-          )}
-        </div>
-      )}
+              {/* Seções 2 a 7 */}
+              {[2, 3, 4, 5, 6, 7].map(n => renderSection(n))}
 
-      <div className="container-fluid about py-5">
-        <div className="container py-5">
-          <div className="row g-5">
-            <article className="col-xl-8 ali-text">
-              {/* Section 2 */}
-              {post.section2_subtitle && <h1 className="mb-2 article-topico"><strong>{post.section2_subtitle}</strong></h1>}
-              {post.section2_content && <div className="mb-4" dangerouslySetInnerHTML={{ __html: post.section2_content }} />}
+              {/* Botão de Retorno */}
+              <div className="text-center mt-5 pt-5 border-top">
+                <Link className="btn-hover-bg btn btn-primary text-white py-3 px-5 rounded-pill shadow-lg fw-bold" to="/blog">
+                  <i className="fas fa-th me-2"></i> Retornar ao Mosaico de Artigos
+                </Link>
+                <div className="mt-3">
+                  <Link to="/" className="text-muted small text-decoration-none hover-primary">
+                    Ir para a Página Inicial
+                  </Link>
+                </div>
+              </div>
 
-              {/* Section 3 */}
-              {post.section3_subtitle && <h1 className="mb-2 article-topico"><strong>{post.section3_subtitle}</strong></h1>}
-              {post.section3_content && <div className="mb-4" dangerouslySetInnerHTML={{ __html: post.section3_content }} />}
-
-              {/* Section 4 */}
-              {post.section4_subtitle && <h1 className="mb-2 article-topico"><strong>{post.section4_subtitle}</strong></h1>}
-              {post.section4_content && <div className="mb-4" dangerouslySetInnerHTML={{ __html: post.section4_content }} />}
-
-              <Link className="btn-hover-bg btn btn-primary btn-article col-xl-8 text-white py-2 px-4 mt-5" to="/blog">
-                Voltar ao blog
-              </Link>
-            </article>
+            </div>
           </div>
         </div>
       </div>
@@ -115,13 +132,14 @@ const BlogPostDetail: React.FC = () => {
           background-size: cover;
           padding: 100px 0 0 0;
         }
-        .article-topico { text-align: left !important; font-size: 1.2rem; font-family: Arial, Helvetica, sans-serif; font-weight: bold; }
-        .ali-text { text-align: justify; }
-        .article-pic img { width: 100%; padding-bottom: 10px; }
-        .btn-article { margin: auto; }
-        article { max-width: 80%; margin: auto; }
-        @media (max-width: 1200px) {
-           article { max-width: 100%; }
+        .article-topico { text-align: left !important; font-size: 1.5rem; font-family: Arial, Helvetica, sans-serif; color: var(--bs-primary); margin-top: 2rem; }
+        .ali-text { text-align: justify; line-height: 1.8; font-size: 1.1rem; color: #444; }
+        .article-pic img { border: 5px solid #fff; }
+        .hover-primary:hover { color: var(--bs-primary) !important; text-decoration: underline !important; }
+        
+        @media (max-width: 768px) {
+          .ali-text { font-size: 1rem; }
+          .article-topico { font-size: 1.3rem; }
         }
       `}</style>
     </div>
