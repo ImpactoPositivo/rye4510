@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
 import PageHero from '../components/PageHero';
+import { Eye, EyeOff } from 'lucide-react';
 
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -66,14 +68,25 @@ const LoginPage: React.FC = () => {
                   
                   <div className="mb-4">
                     <label className="form-label fw-bold small text-uppercase">Senha</label>
-                    <input
-                      type="password"
-                      className="form-control form-control-lg bg-light border-0"
-                      placeholder="••••••••"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      required
-                    />
+                    <div className="input-group">
+                      <input
+                        type={showPassword ? 'text' : 'password'}
+                        className="form-control form-control-lg bg-light border-0"
+                        placeholder="••••••••"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                        style={{ borderTopRightRadius: 0, borderBottomRightRadius: 0 }}
+                      />
+                      <button 
+                        type="button" 
+                        className="btn btn-light border-0 px-3" 
+                        onClick={() => setShowPassword(!showPassword)}
+                        style={{ borderTopLeftRadius: 0, borderBottomLeftRadius: 0 }}
+                      >
+                        {showPassword ? <EyeOff size={20} className="text-muted" /> : <Eye size={20} className="text-muted" />}
+                      </button>
+                    </div>
                   </div>
 
                   <button
