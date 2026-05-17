@@ -65,7 +65,7 @@ const BlogPage: React.FC = () => {
                     <div className="blog-img">
                       <img src={post.image_url || '/img/blog-1.jpg'} className="img-fluid w-100" alt={post.title} style={{ height: '200px', objectFit: 'cover' }} />
                       <div className="blog-info">
-                        <span><i className="fa fa-clock me-2"></i>{new Date(post.published_at || post.created_at).toLocaleDateString('en-US', { month: 'short', day: '2-digit', year: '2024' })}</span>
+                        <span><i className="fa fa-clock me-2"></i>{new Date(post.published_at || post.created_at).toLocaleDateString('en-US', { month: 'short', day: '2-digit', year: 'numeric' })}</span>
                         <div className="d-flex">
                           <span className="me-3"> 0 <i className="fa fa-heart"></i></span>
                           <span className="text-white">0 <i className="fa fa-comment"></i></span>

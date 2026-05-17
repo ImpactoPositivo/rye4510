@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { supabase } from '../../lib/supabase';
-import { Image as ImageIcon, Upload, Trash2, Plus, Loader2, Search } from 'lucide-react';
+import { Image as ImageIcon, Trash2, Plus, Loader2 } from 'lucide-react';
 
 const AdminGallery: React.FC = () => {
   const [photos, setPhotos] = useState<any[]>([]);

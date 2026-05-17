@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { supabase } from '../../lib/supabase';
-import { Save, X, Calendar, MapPin, Type, FileText, Upload, Loader2, Image as ImageIcon } from 'lucide-react';
+import { Save, X, Calendar, MapPin, Type, Upload, Loader2, Image as ImageIcon } from 'lucide-react';
 
 const AdminEventEditor: React.FC = () => {
   const { id } = useParams();
@@ -22,7 +22,7 @@ const AdminEventEditor: React.FC = () => {
   }, [id]);
 
   const fetchEvent = async (eventId: string) => {
-    const { data, error } = await supabase.from('events').select('*').eq('id', eventId).single();
+    const { data } = await supabase.from('events').select('*').eq('id', eventId).single();
     if (data) setEvent(data);
   };
 

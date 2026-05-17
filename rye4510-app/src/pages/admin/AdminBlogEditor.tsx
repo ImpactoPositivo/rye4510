@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { supabase } from '../../lib/supabase';
-import { Save, X, Image as ImageIcon, Video, FileText, Type, Upload, Loader2 } from 'lucide-react';
+import { Save, X, Image as ImageIcon, FileText, Type, Upload, Loader2 } from 'lucide-react';
 
 const AdminBlogEditor: React.FC = () => {
   const { id } = useParams();
@@ -37,7 +37,7 @@ const AdminBlogEditor: React.FC = () => {
   }, [id]);
 
   const fetchPost = async (postId: string) => {
-    const { data, error } = await supabase.from('posts').select('*').eq('id', postId).single();
+    const { data } = await supabase.from('posts').select('*').eq('id', postId).single();
     if (data) setPost(data);
   };
 
@@ -67,7 +67,7 @@ const AdminBlogEditor: React.FC = () => {
       const fileName = `${Math.random()}.${fileExt}`;
       const filePath = `blog-images/${fileName}`;
 
-      const { error: uploadError, data } = await supabase.storage
+      const { error: uploadError } = await supabase.storage
         .from('blog') // Bucket name
         .upload(filePath, file);
 
